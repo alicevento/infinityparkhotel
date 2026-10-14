@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hotel Infinity Park — Propuesta 2</title>
+<meta name="description" content="Hotel Infinity Park, Merced 54 Santiago: habitaciones, galería, gastronomía y reserva directa.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#14123D;
+    --soft:#4A4A78;
+    --paper:#F8F4EB;
+    --paper-2:#EFE6D6;
+    --brand:#040055;
+    --gold:#C99D66;
+    --gold-deep:#B8884E;
+    --brand-deep:#02003A;
+    --line:rgba(4,0,85,.22);
+    --ease-out:cubic-bezier(0.23,1,0.32,1);
+    color-scheme: light;
+  }
+  *{box-sizing:border-box;border-radius:0;}
+  html{scroll-padding-top:90px;}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth;}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Jost","Segoe UI",Arial,sans-serif;font-size:16px;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:0;text-wrap:balance;line-height:1.08;}
+  h2.title{font-size:clamp(32px,4.2vw,52px);}
+  em{font-style:italic;}
+  h2.title em{color:var(--brand);}
+  p{margin:0;line-height:1.75;text-wrap:pretty;}
+  :focus-visible{outline:2px solid var(--brand);outline-offset:3px;}
+  .wrap{width:min(1140px,calc(100% - 40px));margin:0 auto;}
+  .center{text-align:center;}
+  .caps{letter-spacing:.22em;text-transform:uppercase;font-size:12px;color:var(--soft);}
+  .lede{max-width:56ch;margin-inline:auto;padding-inline:20px;}
+  .lede p{color:var(--soft);margin-top:16px;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border:0;
+    background:var(--gold);color:var(--brand);font:500 13px/1 "Jost",sans-serif;letter-spacing:.14em;text-transform:uppercase;
+    cursor:pointer;text-decoration:none;white-space:nowrap;
+    transition:transform 160ms var(--ease-out),background-color 160ms ease;
+  }
+  .btn img{width:18px;height:auto;filter:brightness(0);opacity:.85;}
+  .btn:hover{background:var(--gold-deep);}
+  .btn:active{transform:scale(.97);}
+  .btn.sm{padding:12px 22px;font-size:12px;}
+  .btn.white{background:var(--gold);color:var(--brand);}
+  .btn.white:hover{background:var(--gold-deep);}
+  @media (hover:none){.btn:hover,.btn.white:hover{background:var(--gold);}}
+
+  .photo{position:relative;overflow:hidden;background:var(--paper-2);}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 400ms var(--ease-out);}
+  @media (hover:hover) and (pointer:fine){section .photo:hover img{transform:scale(1.03);}}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:env(safe-area-inset-top,0px);z-index:45;background:var(--paper);border-bottom:1px solid var(--line);}
+  .bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding-block:10px;}
+  .menu-btn{width:46px;height:46px;border:1px solid var(--brand);background:transparent;color:var(--brand);cursor:pointer;display:grid;place-items:center;justify-self:start;transition:transform 160ms var(--ease-out),background-color 160ms ease,color 160ms ease;}
+  .menu-btn:active{transform:scale(.94);}
+  @media (hover:hover){.menu-btn:hover{background:var(--brand);color:#fff;}}
+  .brand{display:block;}
+  .brand img{height:54px;width:auto;}
+  .head-cta{justify-self:end;}
+
+  .menu-panel{
+    position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);
+    opacity:0;transform:translateY(-8px);visibility:hidden;pointer-events:none;
+    transition:opacity 140ms var(--ease-out),transform 140ms var(--ease-out),visibility 0s linear 140ms;
+  }
+  .menu-panel.open{opacity:1;transform:translateY(0);visibility:visible;pointer-events:auto;transition:opacity 200ms var(--ease-out),transform 200ms var(--ease-out),visibility 0s;}
+  .menu-panel ul{list-style:none;margin:0 auto;padding:6px 0 18px;width:min(1140px,calc(100% - 40px));columns:2;column-gap:40px;}
+  .menu-panel li{break-inside:avoid;border-bottom:1px solid var(--line);}
+  .menu-panel a{display:block;padding:13px 0;font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;text-decoration:none;color:var(--ink);}
+  @media (hover:hover){.menu-panel a:hover{color:var(--brand);}}
+  .menu-panel.open li{animation:rise 260ms var(--ease-out) both;}
+  .menu-panel.open li:nth-child(2){animation-delay:30ms;}
+  .menu-panel.open li:nth-child(3){animation-delay:60ms;}
+  .menu-panel.open li:nth-child(4){animation-delay:90ms;}
+  .menu-panel.open li:nth-child(5){animation-delay:120ms;}
+  .menu-panel.open li:nth-child(6){animation-delay:150ms;}
+  .menu-panel.open li:nth-child(7){animation-delay:180ms;}
+  .menu-panel.open li:nth-child(8){animation-delay:210ms;}
+
+  /* ---------- inicio ---------- */
+  .hero{position:relative;height:min(88vh,740px);min-height:520px;overflow:hidden;isolation:isolate;}
+  .hero > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,2,40,.66),rgba(4,2,40,.4) 60%,rgba(4,2,40,.3));}
+  .hero-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding:30px 20px 120px;color:#fff;}
+  .hero-copy .sym{width:46px;height:auto;}
+  .hero-copy .caps{color:#E3E6F9;}
+  .hero-copy h1{font-style:italic;font-size:clamp(38px,6.4vw,84px);color:#fff;max-width:17ch;text-shadow:0 2px 26px rgba(4,2,40,.5);}
+  .hero-copy p.sub{color:#E8EAFA;max-width:48ch;font-size:17px;}
+
+  /* ---------- reservar: buscador horizontal siempre a la mano ---------- */
+  .search-bar{
+    position:fixed;left:0;right:0;margin-inline:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:40;
+    width:max-content;max-width:calc(100% - 24px);display:flex;align-items:stretch;gap:0;
+    background:rgba(2,0,58,.97);border:1px solid rgba(255,255,255,.3);box-shadow:0 18px 44px -18px rgba(4,2,40,.7);
+    animation:dock-in 420ms var(--ease-out) 300ms both;
+  }
+  .dock-fields,.dock-row{display:contents;}
+  .dock-toggle{display:none;}
+  .search-bar .field{min-width:170px;padding:12px 24px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,.28);transition:background-color 150ms ease;}
+  .search-bar .field:hover,.search-bar .field:focus-within{background:rgba(255,255,255,.12);}
+  .search-bar label{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#E3E6F9;margin-bottom:3px;}
+  .search-bar input,.search-bar select{background:none;border:0;color:#fff;font:500 15px "Jost",sans-serif;padding:0;min-height:28px;}
+  .search-bar select option{color:#14123D;}
+  .search-bar input::-webkit-calendar-picker-indicator{filter:invert(1);}
+  .search-bar input:focus-visible,.search-bar select:focus-visible,.search-bar .btn:focus-visible,.dock-toggle:focus-visible{outline:2px solid #fff;outline-offset:-2px;}
+  .search-bar .btn{flex-shrink:0;padding-inline:34px;}
+  @media (pointer:coarse){.search-bar input,.search-bar select{font-size:16px;}}
+
+  section{padding-block:clamp(60px,8vw,104px);}
+
+  .facts{display:flex;justify-content:center;gap:12px 44px;flex-wrap:wrap;margin:18px 0 0;padding:0;}
+  .facts li{list-style:none;display:flex;align-items:center;gap:10px;font-size:15px;}
+  .facts b{color:var(--brand);font-weight:500;}
+
+  /* nosotros */
+  .stagger{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;align-items:end;}
+  .stagger .photo:first-child{aspect-ratio:3/4;align-self:start;margin-top:64px;}
+  .stagger .photo:last-child{aspect-ratio:4/3;}
+  .statement{max-width:42ch;margin:72px auto 0;text-align:center;}
+  .statement p{margin-top:18px;color:var(--soft);}
+  .statement p + p{margin-top:12px;}
+
+  /* habitaciones */
+  [data-sec="habitaciones"]{background:var(--paper-2);}
+  .rooms-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+  .room .photo{aspect-ratio:4/5;}
+  .room h3{margin-top:16px;font-size:28px;}
+  .room p{color:var(--soft);margin-top:4px;font-size:15px;}
+
+  /* galería: 12 celdas exactas en 4 columnas, sin huecos */
+  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,19vw);gap:8px;width:min(1280px,calc(100% - 40px));margin:52px auto 0;}
+  .mosaic .photo:nth-child(1){grid-column:span 2;grid-row:span 2;}
+  .mosaic .photo:nth-child(8){grid-column:span 2;}
+
+  /* gastronomía */
+  .gastro-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px;}
+  .gastro-pair .photo{aspect-ratio:4/3;}
+  .gastro-pair .photo:nth-child(2){margin-top:44px;}
+
+  /* carta */
+  [data-sec="carta"]{background:var(--brand);color:#fff;text-align:center;}
+  [data-sec="carta"] .inner{display:flex;flex-direction:column;align-items:center;gap:20px;width:min(720px,calc(100% - 40px));margin:0 auto;}
+  [data-sec="carta"] h2{font-style:italic;font-size:clamp(36px,5vw,62px);}
+  [data-sec="carta"] p{color:#DDE0F6;max-width:44ch;}
+
+  /* contacto */
+  .contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start;}
+  .contact p.lead{color:var(--soft);margin-top:16px;}
+  .contact .btn{margin-top:26px;}
+  .info{border-top:1px solid var(--line);}
+  .info-item{padding:18px 0;border-bottom:1px solid var(--line);}
+  .info-item small{display:block;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:4px;}
+  .info-item span,.info-item a{font-size:18px;text-decoration:none;word-break:break-word;}
+  .info-item a{display:inline-block;padding-block:3px;}
+  .info-item a:hover{text-decoration:underline;text-underline-offset:4px;}
+
+  footer{background:var(--brand-deep);color:#fff;padding:clamp(36px,5vw,56px) 0 120px;}
+  .foot-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+  .foot-logo img{height:76px;width:auto;}
+  .foot-links{display:flex;gap:24px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+  .foot-links::-webkit-scrollbar{display:none;}
+  .foot-links a{flex-shrink:0;color:#fff;text-decoration:none;font-size:15px;padding-block:6px;}
+  .foot-links a:hover{text-decoration:underline;text-underline-offset:4px;}
+  .foot-bottom{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#D5D9F3;}
+
+  .proposal-badge{position:fixed;right:14px;bottom:96px;z-index:50;background:var(--brand-deep);color:#fff;font-size:12px;font-weight:500;letter-spacing:.06em;padding:8px 12px;border:1px solid rgba(255,255,255,.35);}
+
+  @keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  @keyframes fade{from{opacity:0;}to{opacity:1;}}
+  @keyframes dock-in{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+  .hero-copy > *{animation:rise 520ms var(--ease-out) both;}
+  .hero-copy > *:nth-child(2){animation-delay:60ms;}
+  .hero-copy > *:nth-child(3){animation-delay:120ms;}
+  .hero-copy > *:nth-child(4){animation-delay:200ms;}
+
+  @media (max-width:860px){
+    .stagger,.contact,.rooms-row,.gastro-pair{grid-template-columns:1fr;}
+    .stagger .photo:first-child{margin-top:0;max-width:340px;margin-inline:auto;}
+    .gastro-pair .photo:nth-child(2){margin-top:0;}
+    .menu-panel ul{columns:1;}
+    .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+    .brand img{height:46px;}
+  }
+  @media (max-width:640px){
+    .search-bar{left:0;right:0;bottom:0;margin:0;width:auto;max-width:none;flex-direction:column;border-width:1px 0 0;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));gap:6px;}
+    .dock-fields{display:none;flex-direction:column;gap:0;}
+    .dock-fields.open{display:flex;animation:rise 200ms var(--ease-out) both;}
+    .dock-row{display:flex;gap:8px;}
+    .dock-toggle{display:flex;flex:1;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:500 15px "Jost",sans-serif;text-align:left;cursor:pointer;}
+    .dock-toggle svg{flex-shrink:0;transition:transform 200ms var(--ease-out);}
+    .dock-toggle[aria-expanded="true"] svg{transform:rotate(180deg);}
+    .search-bar .field{min-width:0;width:100%;border-right:0;border-bottom:1px solid rgba(255,255,255,.28);}
+    .search-bar .btn{padding-inline:22px;}
+    .proposal-badge{bottom:84px;}
+    footer{padding-bottom:130px;}
+    .hero-copy{padding-bottom:40px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .menu-panel,.menu-panel.open{transform:none;}
+    .menu-panel.open li,.hero-copy > *,.search-bar,.dock-fields.open{animation-name:fade;}
+    .photo img{transition:none;}
+    section .photo:hover img{transform:none;}
+  }
+
+  /* ---------- páginas internas ---------- */
+  .view[hidden]{display:none;}
+  .view h1:focus{outline:none;}
+  .pg-hero{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(230px,36vh,360px);width:var(--pg-hero-w,100%);margin:var(--pg-hero-m,0);border-radius:var(--pg-r-lg,0);}
+  .pg-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+  .pg-hero::before{content:"";position:absolute;inset:0;background:rgba(4,2,40,.64);z-index:-1;}
+  .pg-hero-copy{width:min(1140px,calc(100% - 40px));margin:0 auto;padding-block:34px;color:#fff;text-align:var(--pg-align,left);}
+  .pg-eyebrow{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#E8EAFA;margin-bottom:10px;}
+  .pg-hero h1{font-size:clamp(40px,6vw,76px);color:#fff;line-height:1.05;}
+  .pg-sec{padding-block:0;}
+  .pg-wrap{width:min(1140px,calc(100% - 40px));margin:0 auto;padding-block:clamp(40px,6vw,76px);}
+  .pg-two{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start;}
+  .pg-text p{color:var(--pg-soft);margin-top:16px;}
+  .pg-text .btn{margin-top:26px;}
+  .pg-photos{display:grid;gap:12px;}
+  .pg-photos.duo{grid-template-columns:1fr 1fr;}
+  .pg-photos .photo{aspect-ratio:4/3;border-radius:var(--pg-r-sm,0);}
+  .pg-intro{max-width:60ch;margin-bottom:32px;}
+  .pg-intro p{color:var(--pg-soft);margin-top:12px;}
+  .room-list{display:grid;gap:18px;}
+  .room-card{display:grid;grid-template-columns:minmax(150px,300px) 1fr;background:var(--pg-surface);border:var(--pg-border);border-radius:var(--pg-r,0);overflow:hidden;}
+  .room-card .photo{min-height:190px;height:100%;}
+  .room-card .body{padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px;}
+  .room-card h3{font-size:30px;}
+  .room-card p{color:var(--pg-soft);font-size:15px;}
+  .room-card .btn{margin-top:10px;}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .gal-grid > :last-child:nth-child(4n+2){grid-column:span 3;}
+  .gal-grid .photo{aspect-ratio:4/3;border-radius:var(--pg-r-sm,0);}
+  .bk-summary{background:var(--pg-surface);border:var(--pg-border);border-radius:var(--pg-r-sm,0);padding:16px 20px;font-size:17px;margin-bottom:24px;}
+  .bk-steps{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;list-style:none;margin:0 0 22px;padding:2px;counter-reset:paso;}
+  .bk-steps::-webkit-scrollbar{display:none;}
+  .bk-steps li{counter-increment:paso;flex-shrink:0;white-space:nowrap;padding:9px 16px;font-size:14px;font-weight:500;border:1px solid var(--pg-soft);border-radius:var(--pg-r-btn,0);color:var(--pg-soft);}
+  .bk-steps li::before{content:counter(paso) ". ";}
+  .bk-steps li.is-done{border-color:var(--pg-accent);color:var(--pg-accent);}
+  .bk-steps li.is-current{background:var(--pg-accent);border-color:var(--pg-accent);color:#fff;}
+  .bk-panel h2:focus{outline:none;}
+  .bk-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
+  .btn.ghost{background:transparent;color:var(--pg-accent);box-shadow:inset 0 0 0 1px var(--pg-accent);}
+  .btn.ghost:hover{background:var(--pg-accent);color:#fff;}
+  .bk-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:760px;}
+  .bk-field.wide{grid-column:1 / -1;}
+  .bk-field label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;}
+  .bk-field input,.bk-field textarea{width:100%;padding:12px 14px;border:1px solid var(--pg-soft);border-radius:min(var(--pg-r-sm,0px),16px);background:#fff;color:#14123D;font:inherit;font-size:16px;}
+  .bk-field input:focus-visible,.bk-field textarea:focus-visible{outline:2px solid var(--pg-accent);outline-offset:2px;}
+  .bk-field [aria-invalid="true"]{border-color:#A3162E;box-shadow:0 0 0 1px #A3162E;}
+  .fld-err{margin-top:6px;font-size:14px;font-weight:500;color:#A3162E;}
+  .bk-dl{display:grid;grid-template-columns:max-content 1fr;gap:10px 28px;margin:0;padding:22px 24px;max-width:640px;background:var(--pg-surface);border:var(--pg-border);border-radius:var(--pg-r,0);}
+  .bk-dl dt{font-size:14px;color:var(--pg-soft);}
+  .bk-dl dd{margin:0;font-weight:500;word-break:break-word;}
+  @media (max-width:640px){.bk-fields{grid-template-columns:1fr;}.bk-dl{grid-template-columns:1fr;gap:2px 0;}.bk-dl dd{margin-bottom:10px;}}
+  .view[data-view="reservar"] .pg-hero{min-height:clamp(96px,13vh,132px);}
+  .view[data-view="reservar"] .pg-hero-copy{padding-block:16px;}
+  .view[data-view="reservar"] .pg-hero h1{font-size:clamp(28px,3.6vw,42px);}
+  .view[data-view="reservar"] .pg-eyebrow{margin-bottom:4px;}
+  .view[data-view="reservar"] .pg-wrap{padding-block:22px 48px;}
+  .rc-desc{font-size:15px;color:var(--pg-soft);}
+  .rc-facts{font-size:14px;font-weight:500;margin-top:2px;}
+  .rc-short{font-size:13.5px;color:var(--pg-soft);}
+  .rc-price{font-size:14px;font-weight:500;margin-top:4px;color:var(--pg-accent);}
+  .rc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .room-card .btn,.hr-card .btn,.rm-info .btn{white-space:normal;max-width:100%;text-align:center;line-height:1.25;}
+  .ph-count{position:absolute;left:10px;bottom:10px;background:rgba(4,2,40,.78);color:#fff;font-size:12px;padding:4px 10px;border-radius:var(--pg-r-btn,0);}
+  .pg-times{margin-top:10px;font-weight:500;}
+  .hotel-serv{margin-top:36px;}
+  .hotel-serv h3{font-size:24px;margin-bottom:12px;}
+  .hotel-serv ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px 24px;}
+  .hotel-serv li{padding-left:20px;position:relative;font-size:15px;}
+  .hotel-serv li::before,.rm-services li::before{content:"✓";position:absolute;left:0;color:var(--pg-accent);}
+  .hr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;width:min(1140px,calc(100% - 40px));margin-inline:auto;padding-inline:0;}
+  .hr-card{background:var(--pg-surface);border:var(--pg-border);border-radius:var(--pg-r,0);overflow:hidden;display:flex;flex-direction:column;}
+  .hr-card .photo{aspect-ratio:4/3;}
+  .hr-card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:4px;flex:1;}
+  .hr-card h3{font-size:26px;}
+  .hr-card .rc-actions{margin-top:auto;padding-top:14px;}
+  .bk-note{margin-top:12px;font-size:14px;font-weight:500;color:var(--pg-accent);}
+  .bk-note:empty{display:none;}
+  .bk-times{margin-top:12px;font-size:13.5px;color:var(--pg-soft);}
+  .bk-help{margin-top:10px;font-size:13.5px;color:var(--pg-soft);}
+  .bk-copied{margin-top:10px;font-size:14px;font-weight:500;color:var(--pg-accent);}
+  .bk-copied:empty{display:none;}
+  .bk-field select{width:100%;padding:12px 14px;border:1px solid var(--pg-soft);border-radius:min(var(--pg-r-sm,0px),16px);background:#fff;color:#14123D;font:inherit;font-size:16px;}
+  .rm-modal{border:0;padding:0;width:min(940px,calc(100% - 20px));max-width:none;max-height:calc(100dvh - 20px);border-radius:var(--pg-r,0);background:var(--paper);color:var(--ink);overflow:auto;box-shadow:0 40px 100px -30px rgba(4,2,40,.7);}
+  .rm-modal::backdrop{background:rgba(4,2,40,.6);}
+  html:has(dialog[open]){overflow:hidden;}
+  .rm-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px 10px 22px;background:var(--paper);border-bottom:1px solid color-mix(in srgb,var(--pg-accent) 22%,transparent);}
+  .rm-head h2{font-size:26px;}
+  .rm-close{width:40px;height:40px;border:0;border-radius:var(--pg-r-btn,0);background:transparent;color:var(--pg-accent);box-shadow:inset 0 0 0 1px var(--pg-accent);font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;}
+  .rm-body{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;padding:18px 22px 22px;}
+  .rm-main{aspect-ratio:3/2;border-radius:min(var(--pg-r-sm,0px),22px);}
+  .rm-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none;padding:3px;}
+  .rm-thumbs::-webkit-scrollbar{display:none;}
+  .rm-thumbs button{flex:0 0 76px;aspect-ratio:3/2;padding:0;border:0;background:none;cursor:pointer;position:relative;overflow:hidden;border-radius:min(var(--pg-r-sm,0px),12px);outline:2px solid transparent;outline-offset:2px;opacity:.75;}
+  .rm-thumbs button[aria-pressed="true"]{outline-color:var(--pg-accent);opacity:1;}
+  .rm-thumbs img{width:100%;height:100%;object-fit:cover;}
+  .rm-info p{color:var(--pg-soft);}
+  .rm-info .rc-price{color:var(--pg-accent);}
+  .rm-facts{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:4px;font-size:15px;font-weight:500;}
+  .rm-info h3{font-size:22px;margin-top:16px;}
+  .rm-services{list-style:none;columns:2;column-gap:20px;padding:0;margin:8px 0 0;font-size:14.5px;}
+  .rm-services li{padding:3px 0 3px 18px;position:relative;break-inside:avoid;}
+  .rm-times{margin-top:14px;font-size:14px;}
+  @media (max-width:760px){.rm-body{grid-template-columns:1fr;}.hr-grid{grid-template-columns:1fr;}}
+  @media (max-width:420px){.rm-services{columns:1;}}
+  .hdr-left{display:flex;align-items:center;gap:20px;justify-self:start;min-width:0;}
+  .hdr-right{display:flex;align-items:center;gap:clamp(14px,1.6vw,26px);justify-self:end;}
+  .nav-inline{display:none;align-items:center;gap:clamp(14px,1.6vw,26px);}
+  .nav-inline a{font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;padding:10px 0;border-bottom:2px solid transparent;transition:color 150ms ease,border-color 150ms ease;}
+  .nav-inline a[aria-current="page"]{color:var(--pg-accent);border-bottom-color:var(--pg-accent);}
+  @media (hover:hover){.nav-inline a:hover{border-bottom-color:currentColor;}}
+  @media (min-width:1080px){.nav-inline{display:flex;}.hdr-left .menu-btn{display:none;}}
+  .social-rail{position:fixed;top:calc(env(safe-area-inset-top,0px) + 96px);right:8px;z-index:44;display:flex;flex-direction:column;gap:8px;}
+  .social-rail a{width:40px;height:40px;display:grid;place-items:center;background:var(--pg-accent);color:#fff;border-radius:var(--pg-r-btn,0);box-shadow:0 8px 20px -10px rgba(4,2,40,.6);transition:transform 160ms var(--ease-out),background-color 160ms ease;}
+  .social-rail a:active{transform:scale(.94);}
+  .social-rail a[aria-disabled="true"]{opacity:.78;}
+  .social-rail svg{width:20px;height:20px;}
+  @media (hover:hover){.social-rail a:hover{background:var(--brand-deep,#02003A);}}
+  .menu-social{display:flex;gap:20px;padding:0 28px 18px;font-size:15px;}
+  .menu-social a{color:var(--pg-accent);text-decoration:underline;text-underline-offset:4px;padding-block:6px;}
+  @media (max-width:860px){.social-rail{display:none;}}
+  .crumbs ol{list-style:none;display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 0 22px;padding:2px;font-size:14px;}
+  .crumbs ol::-webkit-scrollbar{display:none;}
+  .crumbs li{flex-shrink:0;white-space:nowrap;color:var(--pg-soft);}
+  .crumbs li + li::before{content:"›";margin-right:6px;}
+  .crumbs a{color:var(--pg-accent);text-decoration:underline;text-underline-offset:3px;padding-block:4px;display:inline-block;}
+  .crumbs [aria-current]{font-weight:500;color:var(--ink);}
+  .rp-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:start;}
+  .rp-gal .rm-main{aspect-ratio:3/2;}
+  .rp-gal .rm-thumbs button{flex:0 0 92px;}
+  .rm-info h2{font-size:26px;margin-top:20px;}
+  .rp-others{margin-top:44px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--pg-accent) 22%,transparent);}
+  .rp-others h2{font-size:26px;margin-bottom:14px;}
+  .rp-others ul{list-style:none;margin:0;padding:0;display:flex;gap:10px;flex-wrap:wrap;}
+  .rp-grid > *{min-width:0;}
+  .rp-gal .rm-thumbs{max-width:100%;}
+  @media (max-width:860px){.rp-grid{grid-template-columns:minmax(0,1fr);}}
+  .bk-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(24px,4vw,56px);align-items:start;}
+  .bk-cart{position:sticky;top:96px;background:var(--pg-surface);border:var(--pg-border);border-radius:var(--pg-r,0);padding:20px;}
+  .bk-cart[hidden]{display:none;}
+  .bk-cart-title{font-size:26px;margin-bottom:14px;}
+  .bk-cart-room{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin-bottom:16px;font-size:14px;color:var(--pg-soft);}
+  .bk-cart-room .photo{width:84px;aspect-ratio:1;border-radius:min(var(--pg-r-sm,0px),16px);}
+  .bk-cart-room .photo[hidden]{display:none;}
+  .bk-cart-name{font-size:17px;font-weight:600;color:var(--pg-accent);}
+  .bk-cart .bk-next{margin-top:14px;font-size:14px;font-weight:500;}
+  .bk-cart .bk-next:empty{display:none;}
+  #dock.in-cart{position:static;inset:auto;width:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;animation:none;overflow:visible;display:block;-webkit-backdrop-filter:none;backdrop-filter:none;}
+  #dock.in-cart .dock-head,#dock.in-cart .dock-row,#dock.in-cart .dock-close{display:none;}
+  #dock.in-cart .dock-fields{display:flex;flex-direction:column;gap:10px;}
+  @media (max-width:860px){.bk-layout{grid-template-columns:1fr;}.bk-cart{position:static;order:-1;}}
+  body[data-view="reservar"] .proposal-badge{display:none;}
+  .bk-ask{margin-top:22px;padding:18px 20px;border:2px solid var(--pg-accent);border-radius:var(--pg-r-sm,0);background:var(--pg-surface);}
+  .bk-ask[hidden]{display:none;}
+  .bk-ask h3{font-size:24px;}
+  .bk-ask h3:focus{outline:none;}
+  .bk-ask p{margin-top:8px;color:var(--pg-soft);}
+  .bk-ask .bk-actions{margin-top:16px;}
+  .bk-summary p + p{margin-top:4px;}
+  .bk-summary .bk-next{margin-top:12px;font-weight:500;}
+  .room-card.is-selected{outline:3px solid var(--pg-accent);outline-offset:-3px;}
+  .room-note{font-size:14px;font-weight:500;color:var(--pg-accent);}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+  #dock.attn{box-shadow:0 0 0 3px #fff,0 0 0 7px var(--pg-accent);}
+  .more{text-align:center;margin-top:36px;padding-inline:20px;}
+  .more-link{display:inline-block;padding-block:6px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:6px;}
+  .menu-panel a[aria-current="page"]{color:var(--pg-accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;}
+  .foot-links a[aria-current="page"]{text-decoration:underline;text-underline-offset:4px;}
+  @media (max-width:860px){
+    .pg-two{grid-template-columns:1fr;}
+    .gal-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  .dock-toggle{min-width:0;}
+  .dock-summary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+  @media (max-width:860px){.proposal-badge{display:none;}.dock-toggle{padding-inline:14px;font-size:14px;}}
+  @media (max-width:560px){
+    .room-card{grid-template-columns:1fr;}
+    .room-card .photo{aspect-ratio:4/3;min-height:0;}
+  }
+  .nav-inline a{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;}
+  :root{--pg-accent:var(--brand);--pg-soft:var(--soft);--pg-surface:var(--paper-2);--pg-border:1px solid var(--line);--pg-align:center;}
+  .pg-hero h1{font-style:italic;}
+
+  header{z-index:60;}
+  body.menu-open{overflow:hidden;}
+  .menu-btn{width:auto;height:46px;padding:0 16px;display:inline-flex;align-items:center;gap:10px;font:500 13px/1 "Jost",sans-serif;letter-spacing:.14em;text-transform:uppercase;}
+  .menu-panel{position:fixed;left:0;right:0;top:75px;bottom:0;background:var(--brand-deep);border:0;overflow-y:auto;transform:none;transition:opacity 160ms var(--ease-out),visibility 0s linear 160ms;}
+  .menu-panel.open{transform:none;transition:opacity 240ms var(--ease-out),visibility 0s;}
+  .menu-inner{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,6vw,88px);align-items:center;width:min(1140px,calc(100% - 40px));min-height:100%;margin:0 auto;padding-block:clamp(24px,5vh,56px);}
+  .menu-panel ul{columns:1;width:auto;margin:0;padding:0;}
+  .menu-panel li{border-bottom:1px solid rgba(255,255,255,.22);}
+  .menu-panel a{color:#fff;font-style:italic;font-size:clamp(28px,4.4vw,50px);padding:9px 0;transition:transform 200ms var(--ease-out),color 150ms ease;}
+  .menu-panel a[aria-current="page"]{color:#fff;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:8px;}
+  .menu-panel a:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+  @media (hover:hover) and (pointer:fine){.menu-panel a:hover{color:#C9CEF3;transform:translateX(10px);}}
+  .menu-side{color:#DDE0F6;font-size:15px;}
+  .menu-social{width:min(1140px,calc(100% - 40px));margin:0 auto;padding:0 0 22px;}
+  .menu-social a{color:#fff;}
+  .menu-side .photo{aspect-ratio:4/3;margin-bottom:20px;}
+  .menu-side p{line-height:1.8;}
+  @media (max-width:860px){
+    .menu-panel{top:67px;}
+    .menu-inner{grid-template-columns:1fr;align-items:start;}
+    .menu-side .photo{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){.menu-panel a{transition:none;}.menu-panel a:hover{transform:none;}}
+  #dock.in-cart{background:var(--brand-deep);padding:4px;}
+  #dock.in-cart .dock-fields{gap:0;}
+  #dock.in-cart .field{min-width:0;width:100%;border-right:0;border-bottom:1px solid rgba(255,255,255,.28);}
+  #dock.in-cart .field:last-child{border-bottom:0;}
+  .brand img{max-width:none;}
+  @media (min-width:641px){.search-bar{overflow-x:auto;}.search-bar .field{min-width:150px;padding-inline:18px;}}
+  @media (max-width:480px){
+    .bar{gap:8px;}
+    .menu-btn{padding:0 10px;letter-spacing:.08em;}
+    .menu-btn svg{display:none;}
+    .head-cta.btn.sm{padding:12px 12px;letter-spacing:.08em;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="hdr-left"><button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 1h18M0 11h18" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="menu-txt">Menú</span>
+    </button><nav class="nav-inline" aria-label="Secciones del sitio"><a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#habitaciones">Habitaciones</a><a href="#galeria">Galería</a></nav></div>
+    <a class="brand" href="#inicio" aria-label="Infinity Park Hotel, inicio"><img src="assets/logo.png" alt="Infinity Park Hotel"></a>
+    <div class="hdr-right"><nav class="nav-inline" aria-label="Más secciones del sitio"><a href="#gastronomia">Gastronomía</a><a href="#carta">Carta</a><a href="#contacto">Contacto</a></nav><a class="btn sm head-cta" href="#reservar">Reservar</a></div>
+  </div>
+  <nav id="menu" class="menu-panel" aria-label="Menú principal">
+    <div class="menu-inner">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#habitaciones">Habitaciones</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#gastronomia">Gastronomía</a></li>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#reservar">Reservar</a></li>
+      </ul>
+      <div class="menu-side">
+        <div class="photo"><img src="assets/entrada.jpg" alt=""></div>
+        <p>Merced N°54, Santiago, Chile</p>
+        <p>+56 9 4233 9407 · +56 2 3346 5075</p>
+        <p>contacto@infinityparkhotel.com</p>
+      </div>
+    </div>
+  <div class="menu-social"><a href="https://www.instagram.com/infinityparkhotel/" target="_blank" rel="noopener">Instagram<span class="sr"> (se abre en una pestaña nueva)</span></a><a href="#" aria-disabled="true">TikTok<span class="sr"> (enlace pendiente)</span></a></div>
+  </nav>
+</header>
+
+  <form class="search-bar" id="dock" data-dock-mq="(max-width:640px)" aria-label="Reservar estadía por noches">
+    <div class="dock-fields" id="dock-fields">
+      <div class="field"><label for="p2-in">Entrada</label><input type="date" id="p2-in"></div>
+      <div class="field"><label for="p2-out">Salida</label><input type="date" id="p2-out"></div>
+      <div class="field">
+        <label for="p2-guests">Huéspedes</label>
+        <select id="p2-guests"><option value="1 huésped">1 huésped</option><option value="2 huéspedes" selected>2 huéspedes</option></select>
+      </div>
+      <div class="field"><label for="dock-room">Habitación</label><select id="dock-room"><option value="">Sin elegir</option><option value="Doble">Doble</option><option value="Twin">Twin</option><option value="Individual">Individual</option></select></div>
+    </div>
+    <div class="dock-row">
+      <button type="button" class="dock-toggle" aria-expanded="false" aria-controls="dock-fields"><span class="dock-summary">Fechas y huéspedes</span><svg width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 7l6-6 6 6" stroke="currentColor" stroke-width="1.8"/></svg></button>
+      <button class="btn white" type="submit">Reservar</button>
+    </div>
+  </form>
+
+<main>
+  <div class="view" data-view="inicio">
+  <div class="hero">
+    <img class="bg" src="assets/fachada.jpg" alt="Fachada del Hotel Infinity Park en Merced 54, cubierta de verde">
+    <div class="hero-copy">
+      <img class="sym" src="assets/simbolo-light.png" alt="">
+      <p class="caps">Hotel Infinity Park · Santiago</p>
+      <h1 tabindex="-1">Descubre nuestro hotel en la mejor ubicación de Santiago</h1>
+      <p class="sub">Confort y hospitalidad en el corazón de la ciudad, en Merced 54.</p>
+    </div>
+  </div>
+
+
+  <section style="padding-block:44px 0;">
+    <div class="wrap center">
+      <p class="caps">Reserva directa</p>
+      <ul class="facts">
+        <li><b aria-hidden="true">✳</b> Estadías de 1 o más noches</li>
+        <li><b aria-hidden="true">✳</b> Proceso simple y seguro</li>
+        <li><b aria-hidden="true">✳</b> Confirmación instantánea</li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-sec="nosotros">
+    <div class="wrap">
+      <div class="stagger">
+        <div class="photo"><img src="assets/rum-hotel-1.jpg" alt="Lobby del hotel con sillones y mesón de recepción al fondo" loading="lazy"></div>
+        <div class="photo"><img src="assets/rum-hotel-3.jpg" alt="Mesón de recepción con pantalla de cámaras" loading="lazy"></div>
+      </div>
+      <div class="statement">
+        <p class="caps">Nosotros</p>
+        <h2 class="title" style="margin-top:12px;">Una estancia que se vuelve <em>memorable</em></h2>
+        <p>Ubicado en Merced 54, ofrecemos una experiencia única donde el confort y la hospitalidad se encuentran con la modernidad y el estilo. Nuestro hotel no solo es un destino para viajeros, sino un lugar donde cada estancia se convierte en una experiencia memorable.</p>
+        <p>Estamos a pasos de importantes atracciones turísticas, centros comerciales y zonas de negocios, el lugar ideal tanto para viajeros de negocios como de placer.</p>
+      </div>
+    </div>
+    <p class="more"><a class="more-link" href="#nosotros">Conocer más sobre nosotros</a></p>
+  </section>
+
+  <section data-sec="habitaciones">
+    <div class="center lede">
+      <p class="caps">Habitaciones</p>
+      <h2 class="title" style="margin-top:12px;">Descansa <em>de verdad</em></h2>
+      <p>Habitaciones cómodas, diseñadas para que descanses de verdad, con todo lo que necesitas en un solo espacio.</p>
+    </div>
+        <div class="wrap hr-grid">
+      <article class="hr-card"><div class="photo"><img src="assets/rum-doble-1.jpg" alt="Cabecera con luz LED azul y cojines morados" loading="lazy"></div><div class="body"><h3>Habitación Doble</h3><p class="rc-facts">Máx. 2 adultos · 1 cama doble · Vista a la ciudad</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-doble">Ver detalle<span class="sr"> de Habitación Doble</span></a><a class="btn" href="#reservar" data-pick="Doble">Reservar</a></div></div></article>
+      <article class="hr-card"><div class="photo"><img src="assets/rum-twin-1.jpg" alt="Dos camas individuales junto a la ventana" loading="lazy"></div><div class="body"><h3>Habitación Twin</h3><p class="rc-facts">Máx. 2 adultos · 2 camas separadas · Vista a la ciudad</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-twin">Ver detalle<span class="sr"> de Habitación Twin</span></a><a class="btn" href="#reservar" data-pick="Twin">Reservar</a></div></div></article>
+      <article class="hr-card"><div class="photo"><img src="assets/rum-indiv-1.jpg" alt="Cama doble con almohadones y cortinas" loading="lazy"></div><div class="body"><h3>Habitación Individual</h3><p class="rc-facts">Máx. 1 adulto · 1 cama doble</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-individual">Ver detalle<span class="sr"> de Habitación Individual</span></a><a class="btn" href="#reservar" data-pick="Individual">Reservar</a></div></div></article>
+    </div>
+
+    <p class="more"><a class="more-link" href="#habitaciones">Ver todas las habitaciones</a></p>
+  </section>
+
+  <section data-sec="galeria">
+    <div class="center lede">
+      <p class="caps">Galería</p>
+      <h2 class="title" style="margin-top:12px;">Conoce <em>Infinity Park</em></h2>
+    </div>
+    <div class="mosaic">
+      <div class="photo"><img src="assets/fachada-2.jpg" alt="Fachada del hotel con un árbol en la vereda" loading="lazy"></div>
+      <div class="photo"><img src="assets/hab-matrimonial-2.jpg" alt="Habitación con cama matrimonial y cortinas" loading="lazy"></div>
+      <div class="photo"><img src="assets/comida-cafe.jpg" alt="Bandeja con jugo, café y torta junto a un computador" loading="lazy"></div>
+      <div class="photo"><img src="assets/hab-twin-2.jpg" alt="Habitación con dos camas y cabecera blanca" loading="lazy"></div>
+      <div class="photo"><img src="assets/hab-doble.jpg" alt="Habitación con cama amplia y luz cálida" loading="lazy"></div>
+      <div class="photo"><img src="assets/comida-mesa.jpg" alt="Mesa servida con flores y velas" loading="lazy"></div>
+      <div class="photo"><img src="assets/entrada.jpg" alt="Entrada del hotel con muro verde" loading="lazy"></div>
+      <div class="photo"><img src="assets/recepcion.jpg" alt="Recepción y sala de espera del hotel" loading="lazy"></div>
+    </div>
+    <p class="more"><a class="more-link" href="#galeria">Ver la galería completa</a></p>
+  </section>
+
+  <section data-sec="gastronomia" style="padding-top:0;">
+    <div class="center lede">
+      <p class="caps">Gastronomía</p>
+      <h2 class="title" style="margin-top:12px;">Una experiencia culinaria <em>inolvidable</em></h2>
+      <p>En Infinity Park Hotel nos enorgullecemos de ofrecer una experiencia gastronómica que deleitará tus sentidos. Nuestro Infinity Lounge, ubicado en el octavo piso, combina elegancia, innovación y tradición para brindar a nuestros huéspedes una experiencia única.</p>
+    </div>
+    <div class="wrap gastro-pair">
+      <div class="photo"><img src="assets/rum-hotel-5.jpg" alt="Salón del Infinity Lounge con columnas verdes y mesas de madera" loading="lazy"></div>
+      <div class="photo"><img src="assets/rum-hotel-4.jpg" alt="Infinity Lounge con mural de neón y mesas de madera" loading="lazy"></div>
+    </div>
+    <p class="more"><a class="more-link" href="#gastronomia">Conocer el Infinity Lounge</a></p>
+  </section>
+
+  <section data-sec="carta">
+    <div class="inner">
+      <p class="caps" style="color:#E3E6F9;">Infinity Lounge</p>
+      <h2>Descubre nuestra carta</h2>
+      <p>Revisa la carta completa del Infinity Lounge antes de tu visita.</p>
+      <a class="btn white" href="https://infinityparkhotel.com/wp-content/uploads/2019/03/Carta-Infinity-Lounge-8.pdf" target="_blank" rel="noopener">Descargar carta (PDF)</a>
+    </div>
+  </section>
+
+  <section data-sec="contacto">
+    <div class="wrap contact">
+      <div>
+        <p class="caps">Contacto</p>
+        <h2 class="title" style="margin-top:12px;">Te esperamos en <em>Merced 54</em></h2>
+        <p class="lead">El Hotel Infinity Park te espera en la vibrante Merced 54, a solo pasos de la icónica Plaza Italia. Nuestra ubicación estratégica te ofrece fácil acceso a los principales puntos de interés de la ciudad y te sitúa en el epicentro de la cultura y el entretenimiento. Al elegirnos, eliges comodidad y conveniencia en un solo lugar.</p>
+        <a class="btn" href="#reservar">Reservar</a>
+      </div>
+      <div class="info">
+        <div class="info-item"><small>Dirección</small><a href="https://www.google.com/maps/search/?api=1&query=Merced+54+Santiago+Chile" target="_blank" rel="noopener">Merced N°54, Santiago, Chile ↗</a></div>
+        <div class="info-item"><small>Teléfonos</small><span>+56 9 4233 9407<br>+56 2 3346 5075</span></div>
+        <div class="info-item"><small>Correo</small><a href="mailto:contacto@infinityparkhotel.com">contacto@infinityparkhotel.com</a></div>
+        <div class="info-item"><small>Redes sociales</small><span><a href="https://www.instagram.com/infinityparkhotel/" target="_blank" rel="noopener">Instagram</a> · <a href="#" aria-disabled="true" title="Enlace pendiente">TikTok</a></span></div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="view" data-view="nosotros" hidden>
+    <div class="pg-hero"><img src="assets/rum-hotel-1.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Hotel Infinity Park</p><h1 tabindex="-1">Nosotros</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap pg-two">
+      <div class="pg-text">
+        <h2 class="title">Hotel Infinity Park</h2>
+        <p>Hotel Infinity Park, ubicado en el corazón de Santiago, en Merced 54. Ofrecemos una experiencia única donde el confort y la hospitalidad se encuentran con la modernidad y el estilo. Nuestro hotel no solo es un destino para viajeros, sino un lugar donde cada estancia se convierte en una experiencia memorable.</p>
+        <p>Desde nuestras instalaciones, explora las maravillas de Santiago: su rica historia, cultura vibrante y gastronomía excepcional. Estamos a pasos de importantes atracciones turísticas, centros comerciales y zonas de negocios, lo que nos convierte en el lugar ideal tanto para viajeros de negocios como de placer.</p>
+        <a class="btn" href="#habitaciones">Ver habitaciones</a>
+      </div>
+      <div class="pg-photos">
+        <div class="photo"><img src="assets/rum-hotel-3.jpg" alt="Mesón de recepción con pantalla de cámaras" loading="lazy"></div>
+        <div class="photo"><img src="assets/rum-hotel-2.jpg" alt="Fachada del hotel con el letrero Hotel Infinity Park y muro verde" loading="lazy"></div>
+      </div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="habitaciones" hidden>
+    <div class="pg-hero"><img src="assets/hab-doble.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Hotel Infinity Park</p><h1 tabindex="-1">Habitaciones</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap">
+      <div class="pg-intro">
+        <h2 class="title">Todas las habitaciones</h2>
+        <p>Habitaciones cómodas, diseñadas para que descanses de verdad, con todo lo que necesitas en un solo espacio.</p>
+        <p class="pg-times">Check-in desde las 14:00 · Check-out hasta las 12:00</p>
+      </div>
+      <div class="room-list">
+        <article class="room-card"><div class="photo"><img src="assets/rum-doble-1.jpg" alt="Cabecera con luz LED azul y cojines morados" loading="lazy"><span class="ph-count">6 fotos</span></div><div class="body"><h3>Habitación Doble</h3><p class="rc-desc">Habitación con cama doble, aire acondicionado, smart TV, luces LED y baño privado. Diseño moderno.</p><p class="rc-facts">Máx. 2 adultos · 1 cama doble · Vista a la ciudad</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><p class="rc-price">Precio según fecha</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-doble">Ver detalle<span class="sr"> de Habitación Doble</span></a><a class="btn" href="#reservar" data-pick="Doble">Reservar<span class="sr"> Habitación Doble</span></a></div></div></article>
+        <article class="room-card"><div class="photo"><img src="assets/rum-twin-1.jpg" alt="Dos camas individuales junto a la ventana" loading="lazy"><span class="ph-count">3 fotos</span></div><div class="body"><h3>Habitación Twin</h3><p class="rc-desc">Habitación de dos camas individuales, baño privado, televisión, aire acondicionado, armario, caja de seguridad y WiFi gratis.</p><p class="rc-facts">Máx. 2 adultos · 2 camas separadas · Vista a la ciudad</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><p class="rc-price">Precio según fecha</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-twin">Ver detalle<span class="sr"> de Habitación Twin</span></a><a class="btn" href="#reservar" data-pick="Twin">Reservar<span class="sr"> Habitación Twin</span></a></div></div></article>
+        <article class="room-card"><div class="photo"><img src="assets/rum-indiv-1.jpg" alt="Cama doble con almohadones y cortinas" loading="lazy"><span class="ph-count">3 fotos</span></div><div class="body"><h3>Habitación Individual</h3><p class="rc-desc">Habitación con cama doble para 1 adulto, con baño privado, televisión, aire acondicionado, armario, caja de seguridad y WiFi gratis.</p><p class="rc-facts">Máx. 1 adulto · 1 cama doble</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><p class="rc-price">Precio según fecha</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-individual">Ver detalle<span class="sr"> de Habitación Individual</span></a><a class="btn" href="#reservar" data-pick="Individual">Reservar<span class="sr"> Habitación Individual</span></a></div></div></article>
+      </div>
+      <div class="hotel-serv"><h3>Servicios del hotel</h3><ul><li>Servicio de limpieza diario</li><li>Cámaras de seguridad</li><li>Desayuno buffet</li><li>Recepción 24 horas</li><li>Seguridad 24 horas</li></ul></div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="galeria" hidden>
+    <div class="pg-hero"><img src="assets/fachada-2.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Hotel Infinity Park</p><h1 tabindex="-1">Galería</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap">
+      <div class="gal-grid">
+        <div class="photo"><img src="assets/rum-hotel-2.jpg" alt="Fachada del hotel con el letrero Hotel Infinity Park y muro verde" loading="lazy"></div>
+        <div class="photo"><img src="assets/rum-hotel-1.jpg" alt="Lobby del hotel con sillones y mesón de recepción al fondo" loading="lazy"></div>
+        <div class="photo"><img src="assets/rum-hotel-3.jpg" alt="Mesón de recepción con pantalla de cámaras" loading="lazy"></div>
+        <div class="photo"><img src="assets/rum-hotel-4.jpg" alt="Infinity Lounge con mural de neón y mesas de madera" loading="lazy"></div>
+        <div class="photo"><img src="assets/rum-hotel-5.jpg" alt="Salón del Infinity Lounge con columnas verdes y mesas de madera" loading="lazy"></div>
+        <div class="photo"><img src="assets/rum-hotel-6.jpg" alt="Infinity Lounge con ventanales y vista a la ciudad" loading="lazy"></div>
+        <div class="photo"><img src="assets/fachada.jpg" alt="Fachada del hotel en Merced 54" loading="lazy"></div>
+        <div class="photo"><img src="assets/entrada.jpg" alt="Entrada del hotel con muro verde" loading="lazy"></div>
+        <div class="photo"><img src="assets/fachada-2.jpg" alt="Fachada del hotel con un árbol en la vereda" loading="lazy"></div>
+        <div class="photo"><img src="assets/lobby.jpg" alt="Lobby con sillones de cuero y espejos" loading="lazy"></div>
+        <div class="photo"><img src="assets/lobby-sala.jpg" alt="Sala del lobby con ventanales" loading="lazy"></div>
+        <div class="photo"><img src="assets/recepcion.jpg" alt="Recepción y sala de espera" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-azul-1.jpg" alt="Habitación con luz LED azul" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-azul-2.jpg" alt="Habitación con cabecera iluminada en azul" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-matrimonial.jpg" alt="Habitación con cama matrimonial" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-matrimonial-2.jpg" alt="Habitación matrimonial con cortinas" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-doble.jpg" alt="Habitación con cama amplia y luz cálida" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-ventana.jpg" alt="Ventana de una habitación" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-twin.jpg" alt="Habitación con dos camas" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-twin-2.jpg" alt="Habitación con dos camas y cabecera blanca" loading="lazy"></div>
+        <div class="photo"><img src="assets/hab-twin-3.jpg" alt="Habitación con dos camas, televisor y aire acondicionado" loading="lazy"></div>
+        <div class="photo"><img src="assets/comida-desayuno.jpg" alt="Almuerzo con jugos naturales" loading="lazy"></div>
+        <div class="photo"><img src="assets/comida-tabla.jpg" alt="Tabla de quesos y fiambres" loading="lazy"></div>
+        <div class="photo"><img src="assets/comida-cafe.jpg" alt="Bandeja con café, jugo y torta" loading="lazy"></div>
+        <div class="photo"><img src="assets/cerro-cafe.jpg" alt="Café con un cerro de fondo" loading="lazy"></div>
+        <div class="photo"><img src="assets/comida-mesa.jpg" alt="Mesa servida con flores y velas" loading="lazy"></div>
+      </div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="gastronomia" hidden>
+    <div class="pg-hero"><img src="assets/rum-hotel-4.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Hotel Infinity Park</p><h1 tabindex="-1">Gastronomía</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap pg-two">
+      <div class="pg-text">
+        <h2 class="title">Una experiencia culinaria inolvidable</h2>
+        <p>En Infinity Park Hotel nos enorgullecemos de ofrecer una experiencia gastronómica que deleitará tus sentidos y superará todas tus expectativas.</p>
+        <p>Nuestro Infinity Lounge, ubicado en el octavo piso de nuestro hotel, es un destino culinario que combina elegancia, innovación y tradición para brindar a nuestros huéspedes una experiencia única.</p>
+        <a class="btn" href="#carta">Ver la carta</a>
+      </div>
+      <div class="pg-photos">
+        <div class="photo"><img src="assets/rum-hotel-5.jpg" alt="Salón del Infinity Lounge con columnas verdes y mesas de madera" loading="lazy"></div>
+        <div class="pg-photos duo">
+          <div class="photo"><img src="assets/rum-hotel-6.jpg" alt="Infinity Lounge con ventanales y vista a la ciudad" loading="lazy"></div>
+          <div class="photo"><img src="assets/comida-tabla.jpg" alt="Tabla de quesos, fiambres y aceitunas" loading="lazy"></div>
+        </div>
+      </div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="carta" hidden>
+    <div class="pg-hero"><img src="assets/rum-hotel-5.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Infinity Lounge</p><h1 tabindex="-1">Carta</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap pg-two">
+      <div class="pg-text">
+        <h2 class="title">Descubre nuestra carta</h2>
+        <p>La carta completa del Infinity Lounge está disponible para descargar en PDF.</p>
+        <a class="btn" href="https://infinityparkhotel.com/wp-content/uploads/2019/03/Carta-Infinity-Lounge-8.pdf" target="_blank" rel="noopener">Descargar carta (PDF)</a>
+      </div>
+      <div class="pg-photos">
+        <div class="photo"><img src="assets/rum-hotel-4.jpg" alt="Infinity Lounge con mural de neón y mesas de madera" loading="lazy"></div>
+      </div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="contacto" hidden>
+    <div class="pg-hero"><img src="assets/rum-hotel-2.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Hotel Infinity Park</p><h1 tabindex="-1">Contacto</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap pg-two">
+      <div class="pg-text">
+        <h2 class="title">Ubicación</h2>
+        <p>El Hotel Infinity Park te espera en la vibrante Merced 54, a solo pasos de la icónica Plaza Italia. Nuestra ubicación estratégica no solo te ofrece un fácil acceso a los principales puntos de interés de la ciudad, sino que también te sitúa en el epicentro de la cultura y el entretenimiento.</p>
+        <p>Al elegirnos, eliges comodidad y conveniencia en un solo lugar. Ven y descubre por qué somos la opción preferida para quienes buscan experiencias memorables en Santiago.</p>
+        <a class="btn" href="#reservar">Reservar</a>
+      </div>
+      <div class="info">
+        <div class="info-item"><small>Dirección</small><a href="https://www.google.com/maps/search/?api=1&query=Merced+54+Santiago+Chile" target="_blank" rel="noopener">Merced N°54, Santiago, Chile ↗</a></div>
+        <div class="info-item"><small>Teléfonos</small><span>+56 9 4233 9407<br>+56 2 3346 5075</span></div>
+        <div class="info-item"><small>Correo</small><a href="mailto:contacto@infinityparkhotel.com">contacto@infinityparkhotel.com</a></div>
+        <div class="info-item"><small>Redes sociales</small><span><a href="https://www.instagram.com/infinityparkhotel/" target="_blank" rel="noopener">Instagram</a> · <a href="#" aria-disabled="true" title="Enlace pendiente">TikTok</a></span></div>
+      </div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="reservar" hidden>
+    <div class="pg-hero"><img src="assets/hab-azul-2.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Estadías de 1 o más noches</p><h1 tabindex="-1">Reserva tu estadía</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap">
+      <ol class="bk-steps" id="bk-steps" aria-label="Pasos de la reserva" tabindex="0">
+        <li data-step="1">Habitación y fechas</li>
+        <li data-step="2">Tus datos</li>
+        <li data-step="3">Confirmación</li>
+      </ol>
+
+      <div class="bk-layout">
+      <div class="bk-main">
+      <div class="bk-panel" data-panel="1">
+        <div class="pg-intro">
+          <h2 class="title" tabindex="-1">Elige tu habitación</h2>
+          <p>Al elegirla pasas directo a completar tus datos.</p>
+        </div>
+        <div class="room-list" id="bk-rooms">
+        <article class="room-card"><div class="photo"><img src="assets/rum-doble-1.jpg" alt="Cabecera con luz LED azul y cojines morados" loading="lazy"><span class="ph-count">6 fotos</span></div><div class="body"><h3>Habitación Doble</h3><p class="rc-desc">Habitación con cama doble, aire acondicionado, smart TV, luces LED y baño privado. Diseño moderno.</p><p class="rc-facts">Máx. 2 adultos · 1 cama doble · Vista a la ciudad</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><p class="rc-price">Precio según fecha</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-doble">Ver detalle<span class="sr"> de Habitación Doble</span></a><button class="btn" type="button" data-room="Doble">Reservar esta habitación</button></div><p class="room-note" hidden></p></div></article>
+        <article class="room-card"><div class="photo"><img src="assets/rum-twin-1.jpg" alt="Dos camas individuales junto a la ventana" loading="lazy"><span class="ph-count">3 fotos</span></div><div class="body"><h3>Habitación Twin</h3><p class="rc-desc">Habitación de dos camas individuales, baño privado, televisión, aire acondicionado, armario, caja de seguridad y WiFi gratis.</p><p class="rc-facts">Máx. 2 adultos · 2 camas separadas · Vista a la ciudad</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><p class="rc-price">Precio según fecha</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-twin">Ver detalle<span class="sr"> de Habitación Twin</span></a><button class="btn" type="button" data-room="Twin">Reservar esta habitación</button></div><p class="room-note" hidden></p></div></article>
+        <article class="room-card"><div class="photo"><img src="assets/rum-indiv-1.jpg" alt="Cama doble con almohadones y cortinas" loading="lazy"><span class="ph-count">3 fotos</span></div><div class="body"><h3>Habitación Individual</h3><p class="rc-desc">Habitación con cama doble para 1 adulto, con baño privado, televisión, aire acondicionado, armario, caja de seguridad y WiFi gratis.</p><p class="rc-facts">Máx. 1 adulto · 1 cama doble</p><p class="rc-short">Baño privado · Aire acondicionado · WiFi gratis</p><p class="rc-price">Precio según fecha</p><div class="rc-actions"><a class="btn ghost" href="#habitacion-individual">Ver detalle<span class="sr"> de Habitación Individual</span></a><button class="btn" type="button" data-room="Individual">Reservar esta habitación</button></div><p class="room-note" hidden></p></div></article>
+        </div>
+      </div>
+
+      <form class="bk-panel" data-panel="2" id="bk-form" novalidate hidden>
+        <div class="pg-intro">
+          <h2 class="title" tabindex="-1">Tus datos</h2>
+          <p>Los usamos solo para confirmar tu reserva.</p>
+        </div>
+        <div class="bk-fields">
+          <div class="bk-field"><label for="bk-name">Nombre y apellido</label><input id="bk-name" type="text" autocomplete="name" aria-describedby="bk-name-err"><p class="fld-err" id="bk-name-err" hidden></p></div>
+          <div class="bk-field"><label for="bk-email">Correo</label><input id="bk-email" type="email" autocomplete="email" inputmode="email" aria-describedby="bk-email-err"><p class="fld-err" id="bk-email-err" hidden></p></div>
+          <div class="bk-field"><label for="bk-phone">Teléfono</label><input id="bk-phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="bk-phone-err"><p class="fld-err" id="bk-phone-err" hidden></p></div>
+          <div class="bk-field"><label for="bk-arrival">Hora estimada de llegada (opcional)</label><select id="bk-arrival"><option>No lo sé aún</option><option>14:00 – 16:00</option><option>16:00 – 18:00</option><option>18:00 – 20:00</option><option>20:00 – 22:00</option><option>Después de las 22:00</option></select></div>
+          <div class="bk-field wide"><label for="bk-notes">Comentarios (opcional)</label><textarea id="bk-notes" rows="3"></textarea></div>
+        </div>
+        <div class="bk-actions" id="bk-form-actions"><button class="btn ghost" type="button" id="bk-back">Cambiar habitación</button><button class="btn" type="submit">Confirmar reserva</button></div>
+        <div class="bk-ask" id="bk-ask" role="group" aria-labelledby="bk-ask-title" hidden>
+          <h3 id="bk-ask-title" tabindex="-1">¿Quieres hacer esta reserva?</h3>
+          <p id="bk-ask-text"></p>
+          <div class="bk-actions"><button class="btn ghost" type="button" id="bk-ask-no">Seguir editando</button><button class="btn" type="button" id="bk-ask-yes">Sí, reservar</button></div>
+        </div>
+      </form>
+
+      <div class="bk-panel" data-panel="3" hidden>
+        <div class="pg-intro">
+          <h2 class="title" tabindex="-1">Tu reserva está lista</h2>
+          <p>Esto es una demostración: no se envió ni se cobró nada. En el sitio real, aquí llega la confirmación al correo.</p>
+        </div>
+        <dl class="bk-dl">
+          <dt>Habitación</dt><dd id="c-room"></dd>
+          <dt>Fechas</dt><dd id="c-dates"></dd>
+          <dt>Huéspedes</dt><dd id="c-guests"></dd>
+          <dt>A nombre de</dt><dd id="c-name"></dd>
+          <dt>Correo</dt><dd id="c-email"></dd>
+          <dt>Teléfono</dt><dd id="c-phone"></dd>
+          <dt>Llegada estimada</dt><dd id="c-arrival"></dd>
+          <dt>Horarios</dt><dd>Check-in desde las 14:00 · Check-out hasta las 12:00</dd>
+        </dl>
+        <div class="bk-actions"><button class="btn ghost" type="button" id="bk-copy">Copiar resumen</button><button class="btn ghost" type="button" id="bk-new">Hacer otra reserva</button><a class="btn" href="#inicio">Volver al inicio</a></div>
+        <p class="bk-copied" id="bk-copied" role="status"></p>
+      </div>
+      </div>
+      <aside class="bk-cart" id="bk-cart" aria-label="Tu reserva">
+        <h2 class="bk-cart-title">Tu reserva</h2>
+        <div class="bk-cart-room">
+          <div class="photo" id="bk-thumb" hidden><img id="bk-thumb-img" src="assets/hab-matrimonial.jpg" alt=""></div>
+          <div>
+            <p class="bk-cart-name" id="bk-room">Habitación sin elegir</p>
+            <p id="bk-dates">Fechas sin elegir</p>
+            <p id="bk-guests">2 huéspedes</p>
+          </div>
+        </div>
+        <div id="bk-dock-slot"></div>
+        <p class="bk-note" id="bk-note" role="status"></p>
+        <p class="bk-next" id="bk-next" role="status"></p>
+        <p class="bk-times">Check-in desde las 14:00 · Check-out hasta las 12:00</p>
+        <p class="bk-help">¿Dudas? Llámanos al +56 9 4233 9407 o escríbenos a contacto@infinityparkhotel.com</p>
+      </aside>
+      </div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="habitacion-doble" hidden>
+    <div class="pg-hero"><img src="assets/rum-doble-1.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Habitaciones</p><h1 tabindex="-1">Habitación Doble</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap">
+      <nav class="crumbs" aria-label="Ruta de navegación"><ol><li><a href="#inicio">Inicio</a></li><li><a href="#habitaciones">Habitaciones</a></li><li aria-current="page">Habitación Doble</li></ol></nav>
+      <div class="rp-grid">
+        <div class="rp-gal"><div class="photo rm-main"><img src="assets/rum-doble-1.jpg" alt="Cabecera con luz LED azul y cojines morados"></div><div class="rm-thumbs" role="group" aria-label="Fotos de Habitación Doble"><button type="button" data-src="assets/rum-doble-1.jpg" data-alt="Cabecera con luz LED azul y cojines morados" aria-label="Foto 1 de 6: Cabecera con luz LED azul y cojines morados" aria-pressed="true"><img src="assets/rum-doble-1.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-doble-2.jpg" data-alt="Televisor, escritorio, frigobar y caja fuerte" aria-label="Foto 2 de 6: Televisor, escritorio, frigobar y caja fuerte" aria-pressed="false"><img src="assets/rum-doble-2.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-doble-3.jpg" data-alt="Cama doble con el baño al fondo" aria-label="Foto 3 de 6: Cama doble con el baño al fondo" aria-pressed="false"><img src="assets/rum-doble-3.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-doble-4.jpg" data-alt="Baño con ducha, lavamanos y secador de pelo" aria-label="Foto 4 de 6: Baño con ducha, lavamanos y secador de pelo" aria-pressed="false"><img src="assets/rum-doble-4.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-doble-5.jpg" data-alt="Cama doble y puerta del baño" aria-label="Foto 5 de 6: Cama doble y puerta del baño" aria-pressed="false"><img src="assets/rum-doble-5.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-doble-6.jpg" data-alt="Cama doble con cojines morados" aria-label="Foto 6 de 6: Cama doble con cojines morados" aria-pressed="false"><img src="assets/rum-doble-6.jpg" alt="" loading="lazy"></button></div></div>
+        <div class="rm-info">
+          <p>Habitación con cama doble, aire acondicionado, smart TV, luces LED y baño privado. Diseño moderno.</p>
+          <ul class="rm-facts"><li>Máx. 2 adultos</li><li>1 cama doble</li><li>Vista a la ciudad</li></ul>
+          <h2>Servicios</h2>
+          <ul class="rm-services"><li>Aire acondicionado</li><li>Artículos de aseo gratuitos</li><li>Baño privado</li><li>Caja fuerte</li><li>Ducha</li><li>Escritorio</li><li>Frigobar</li><li>Ropa de cama</li><li>Secador de pelo</li><li>TV por cable / satelital</li><li>Televisión</li><li>Toallas</li><li>WiFi gratis</li></ul>
+          <p class="rm-times">Check-in desde las 14:00 · Check-out hasta las 12:00</p>
+          <p class="rc-price">Precio según fecha</p>
+          <div class="rc-actions"><a class="btn" href="#reservar" data-pick="Doble">Reservar esta habitación</a></div>
+        </div>
+      </div>
+      <div class="rp-others"><h2>Otras habitaciones</h2><ul><li><a class="btn ghost" href="#habitacion-twin">Habitación Twin</a></li><li><a class="btn ghost" href="#habitacion-individual">Habitación Individual</a></li><li><a class="btn ghost" href="#habitaciones">Ver todas</a></li></ul></div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="habitacion-twin" hidden>
+    <div class="pg-hero"><img src="assets/rum-twin-1.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Habitaciones</p><h1 tabindex="-1">Habitación Twin</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap">
+      <nav class="crumbs" aria-label="Ruta de navegación"><ol><li><a href="#inicio">Inicio</a></li><li><a href="#habitaciones">Habitaciones</a></li><li aria-current="page">Habitación Twin</li></ol></nav>
+      <div class="rp-grid">
+        <div class="rp-gal"><div class="photo rm-main"><img src="assets/rum-twin-1.jpg" alt="Dos camas individuales junto a la ventana"></div><div class="rm-thumbs" role="group" aria-label="Fotos de Habitación Twin"><button type="button" data-src="assets/rum-twin-1.jpg" data-alt="Dos camas individuales junto a la ventana" aria-label="Foto 1 de 3: Dos camas individuales junto a la ventana" aria-pressed="true"><img src="assets/rum-twin-1.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-twin-2.jpg" data-alt="Dos camas con aire acondicionado y baño al fondo" aria-label="Foto 2 de 3: Dos camas con aire acondicionado y baño al fondo" aria-pressed="false"><img src="assets/rum-twin-2.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-twin-3.jpg" data-alt="Dos camas con velador y lámpara" aria-label="Foto 3 de 3: Dos camas con velador y lámpara" aria-pressed="false"><img src="assets/rum-twin-3.jpg" alt="" loading="lazy"></button></div></div>
+        <div class="rm-info">
+          <p>Habitación de dos camas individuales, baño privado, televisión, aire acondicionado, armario, caja de seguridad y WiFi gratis.</p>
+          <ul class="rm-facts"><li>Máx. 2 adultos</li><li>2 camas separadas</li><li>Vista a la ciudad</li><li>Accesible para personas con movilidad reducida</li></ul>
+          <h2>Servicios</h2>
+          <ul class="rm-services"><li>Aire acondicionado</li><li>Artículos de aseo gratuitos</li><li>Baño privado</li><li>Caja fuerte</li><li>Ducha</li><li>Escritorio</li><li>Frigobar</li><li>Ropa de cama</li><li>Secador de pelo</li><li>TV por cable / satelital</li><li>Televisión</li><li>Toallas</li><li>WiFi gratis</li></ul>
+          <p class="rm-times">Check-in desde las 14:00 · Check-out hasta las 12:00</p>
+          <p class="rc-price">Precio según fecha</p>
+          <div class="rc-actions"><a class="btn" href="#reservar" data-pick="Twin">Reservar esta habitación</a></div>
+        </div>
+      </div>
+      <div class="rp-others"><h2>Otras habitaciones</h2><ul><li><a class="btn ghost" href="#habitacion-doble">Habitación Doble</a></li><li><a class="btn ghost" href="#habitacion-individual">Habitación Individual</a></li><li><a class="btn ghost" href="#habitaciones">Ver todas</a></li></ul></div>
+    </div></section>
+  </div>
+
+  <div class="view" data-view="habitacion-individual" hidden>
+    <div class="pg-hero"><img src="assets/rum-indiv-1.jpg" alt=""><div class="pg-hero-copy"><p class="pg-eyebrow">Habitaciones</p><h1 tabindex="-1">Habitación Individual</h1></div></div>
+    <section class="pg-sec"><div class="pg-wrap">
+      <nav class="crumbs" aria-label="Ruta de navegación"><ol><li><a href="#inicio">Inicio</a></li><li><a href="#habitaciones">Habitaciones</a></li><li aria-current="page">Habitación Individual</li></ol></nav>
+      <div class="rp-grid">
+        <div class="rp-gal"><div class="photo rm-main"><img src="assets/rum-indiv-1.jpg" alt="Cama doble con almohadones y cortinas"></div><div class="rm-thumbs" role="group" aria-label="Fotos de Habitación Individual"><button type="button" data-src="assets/rum-indiv-1.jpg" data-alt="Cama doble con almohadones y cortinas" aria-label="Foto 1 de 3: Cama doble con almohadones y cortinas" aria-pressed="true"><img src="assets/rum-indiv-1.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-indiv-2.jpg" data-alt="Cama doble con camino morado" aria-label="Foto 2 de 3: Cama doble con camino morado" aria-pressed="false"><img src="assets/rum-indiv-2.jpg" alt="" loading="lazy"></button><button type="button" data-src="assets/rum-indiv-3.jpg" data-alt="Cama doble, aire acondicionado y clóset" aria-label="Foto 3 de 3: Cama doble, aire acondicionado y clóset" aria-pressed="false"><img src="assets/rum-indiv-3.jpg" alt="" loading="lazy"></button></div></div>
+        <div class="rm-info">
+          <p>Habitación con cama doble para 1 adulto, con baño privado, televisión, aire acondicionado, armario, caja de seguridad y WiFi gratis.</p>
+          <ul class="rm-facts"><li>Máx. 1 adulto</li><li>1 cama doble</li></ul>
+          <h2>Servicios</h2>
+          <ul class="rm-services"><li>Aire acondicionado</li><li>Artículos de aseo gratuitos</li><li>Baño privado</li><li>Caja fuerte</li><li>Ducha</li><li>Escritorio</li><li>Ropa de cama</li><li>Secador de pelo</li><li>TV por cable / satelital</li><li>Televisión</li><li>Toallas</li><li>WiFi gratis</li></ul>
+          <p class="rm-times">Check-in desde las 14:00 · Check-out hasta las 12:00</p>
+          <p class="rc-price">Precio según fecha</p>
+          <div class="rc-actions"><a class="btn" href="#reservar" data-pick="Individual">Reservar esta habitación</a></div>
+        </div>
+      </div>
+      <div class="rp-others"><h2>Otras habitaciones</h2><ul><li><a class="btn ghost" href="#habitacion-doble">Habitación Doble</a></li><li><a class="btn ghost" href="#habitacion-twin">Habitación Twin</a></li><li><a class="btn ghost" href="#habitaciones">Ver todas</a></li></ul></div>
+    </div></section>
+  </div></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="foot-logo" href="#inicio" aria-label="Infinity Park Hotel, inicio"><img src="assets/logo-light.png" alt="Infinity Park Hotel"></a>
+      <nav class="foot-links" aria-label="Pie de página">
+        <a href="#nosotros">Nosotros</a><a href="#habitaciones">Habitaciones</a><a href="#galeria">Galería</a><a href="#gastronomia">Gastronomía</a><a href="#carta">Carta</a><a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Hotel Infinity Park · Merced N°54, Santiago</span>
+      <span>Propuesta 2 — inspirada en The Damai</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="social-rail" aria-label="Redes sociales">
+  <a href="https://www.instagram.com/infinityparkhotel/" target="_blank" rel="noopener" aria-label="Instagram de Hotel Infinity Park (se abre en una pestaña nueva)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></a>
+  <a href="#" aria-label="TikTok de Hotel Infinity Park (enlace pendiente)" aria-disabled="true" title="Enlace pendiente"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.73 5.7 3.14 0 5.68-2.55 5.68-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a>
+</nav>
+<aside class="proposal-badge" aria-label="Aviso">Propuesta 2</aside>
+
+<script>
+var baseTitle = document.title;
+var reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---- menú ---- */
+var menuBtn = document.getElementById("menu-btn"), menu = document.getElementById("menu");
+function setMenu(open){
+  menu.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  var full = getComputedStyle(menu).position === "fixed";
+  if (full) { menu.style.top = menu.parentElement.getBoundingClientRect().bottom + "px"; document.body.classList.toggle("menu-open", open); }
+  var txt = menuBtn.querySelector(".menu-txt"); if (txt) txt.textContent = open ? "Cerrar" : "Menú";
+  if (open) { var first = menu.querySelector("a"); if (first) first.focus({preventScroll:true}); }
+}
+document.addEventListener("keydown", function(e){
+  if (e.key !== "Tab" || !menu.classList.contains("open") || getComputedStyle(menu).position !== "fixed") return;
+  var items = [menuBtn].concat(Array.prototype.slice.call(menu.querySelectorAll("a")));
+  var i = items.indexOf(document.activeElement), n = e.shiftKey ? i - 1 : i + 1;
+  if (i === -1 || n < 0 || n >= items.length) { e.preventDefault(); items[n < 0 ? items.length - 1 : 0].focus(); }
+});
+menuBtn.addEventListener("click", function(){ setMenu(!menu.classList.contains("open")); });
+document.addEventListener("keydown", function(e){ if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
+document.addEventListener("click", function(e){ if (menu.classList.contains("open") && !menu.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false); });
+
+/* ---- páginas ---- */
+var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+var current = "inicio";
+function isView(n){ return views.some(function(v){ return v.getAttribute("data-view") === n; }); }
+function show(name, moveFocus){
+  if (!isView(name)) name = "inicio";
+  current = name;
+  views.forEach(function(v){ v.hidden = v.getAttribute("data-view") !== name; });
+  var navName = name.indexOf("habitacion-") === 0 ? "habitaciones" : name;
+  document.querySelectorAll('.menu-panel a, .foot-links a, .nav-inline a').forEach(function(a){
+    if (a.getAttribute("href") === "#" + navName) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  var rn = {"habitacion-doble":"Habitación Doble","habitacion-twin":"Habitación Twin","habitacion-individual":"Habitación Individual","nosotros":"Nosotros","habitaciones":"Habitaciones","galeria":"Galería","gastronomia":"Gastronomía","carta":"Carta","contacto":"Contacto","reservar":"Reserva tu estadía"};
+  document.title = rn[name] ? rn[name] + " — Hotel Infinity Park, Merced 54 Santiago" : baseTitle;
+  window.scrollTo(0, 0);
+  document.body.setAttribute("data-view", name);
+  if (name === "reservar") enterBooking(); else placeDock(false);
+  if (moveFocus) { var h = document.querySelector('.view[data-view="' + name + '"] h1'); if (h) h.focus({preventScroll:true}); }
+}
+function go(name){
+  try { history.pushState(null, "", "#" + name); } catch (err) {}
+  show(name, true);
+}
+document.addEventListener("click", function(e){
+  var a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var n = a.getAttribute("href").slice(1);
+  if (!n) { e.preventDefault(); return; }
+  var pick = a.getAttribute("data-pick");
+  if (n === "reservar" && bkModal) { e.preventDefault(); setMenu(false); if (pick) { dRoom.value = pick; bkStep = 1; } goBooking(); return; }
+  if (isView(n)) { e.preventDefault(); setMenu(false); if (bkModal && bkModal.open) bkModal.close(); if (pick) { dRoom.value = pick; bkStep = 1; } go(n); }
+});
+window.addEventListener("popstate", function(){ show(location.hash.slice(1), false); });
+
+/* ---- buscador ---- */
+var dock = document.getElementById("dock");
+var dTog = dock.querySelector(".dock-toggle"), dFields = dock.querySelector(".dock-fields"), dSum = dock.querySelector(".dock-summary");
+var dMq = matchMedia(dock.getAttribute("data-dock-mq"));
+var dDates = dock.querySelectorAll("input[type=date]"), dIn = dDates[0], dOut = dDates[1], dGuests = dock.querySelector("select");
+function iso(d){ return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0"); }
+(function(){
+  var today = new Date(); dIn.min = iso(today);
+  var tomorrow = new Date(today); tomorrow.setDate(today.getDate()+1); dOut.min = iso(tomorrow);
+})();
+dIn.addEventListener("change", function(){
+  if (!dIn.value) return;
+  var next = new Date(dIn.value + "T12:00:00"); next.setDate(next.getDate()+1);
+  dOut.min = iso(next);
+  if (!dOut.value || dOut.value <= dIn.value) dOut.value = iso(next);
+});
+function setDock(o){ dFields.classList.toggle("open", o); dock.classList.toggle("is-open", o); dTog.setAttribute("aria-expanded", String(o)); }
+var dClose = dock.querySelector(".dock-close");
+if (dClose) dClose.addEventListener("click", function(){ setDock(false); dTog.focus(); });
+if (!dMq.matches) setDock(true);
+dTog.addEventListener("click", function(){ setDock(!dFields.classList.contains("open")); });
+document.addEventListener("keydown", function(e){ if (e.key === "Escape" && dFields.classList.contains("open") && !dock.classList.contains("in-cart")) { setDock(false); dTog.focus(); } });
+document.addEventListener("click", function(e){ if (dMq.matches && dFields.classList.contains("open") && !dock.contains(e.target) && !e.target.closest("[data-room]")) setDock(false); });
+var dRoom = document.getElementById("dock-room");
+function $(id){ return document.getElementById(id); }
+function shortDate(v){ var p = v.split("-"); return p[2] + "/" + p[1]; }
+function longDate(v){ return new Date(v + "T12:00:00").toLocaleDateString("es-CL", {day:"numeric", month:"long"}); }
+function nights(){
+  if (!dIn.value || !dOut.value) return 0;
+  var n = Math.round((new Date(dOut.value + "T12:00:00") - new Date(dIn.value + "T12:00:00")) / 86400000);
+  return n > 0 ? n : 0;
+}
+function datesText(){ var n = nights(); return n ? longDate(dIn.value) + " al " + longDate(dOut.value) + " · " + n + (n === 1 ? " noche" : " noches") : ""; }
+
+/* ---- reserva en 3 pasos (página propia o ventana modal) ---- */
+var CAP = {"Doble":2, "Twin":2, "Individual":1};
+function applyCapacity(){
+  var cap = CAP[dRoom.value] || 2, note = $("bk-note");
+  var opt2 = dGuests.querySelector('option[value="2 huéspedes"]');
+  if (opt2) opt2.disabled = cap < 2;
+  if (cap < 2 && dGuests.value !== "1 huésped") { dGuests.value = "1 huésped"; note.textContent = "La Habitación Individual admite 1 huésped; ajustamos tus huéspedes."; }
+  else note.textContent = "";
+}
+var bkStep = 1, bkWait = false;
+var bkModal = document.getElementById("bk-modal");
+function placeDock(inCart){
+  var slot = $("bk-dock-slot");
+  if (inCart) { if (dock.parentElement !== slot) { slot.appendChild(dock); dock.classList.add("in-cart"); } }
+  else if (dock.parentElement === slot) { document.querySelector("header").after(dock); dock.classList.remove("in-cart"); }
+}
+function enterBooking(){
+  placeDock(true);
+  if (bkStep === 3) bkStep = 1;
+  if (bkStep === 1 && dRoom.value && nights()) bkStep = 2;
+  bkWait = bkStep === 1 && !!dRoom.value && !nights();
+  setStep(bkStep, false);
+}
+function goBooking(){
+  if (!bkModal) { go("reservar"); return; }
+  if (!bkModal.open) { enterBooking(); bkModal.showModal(); bkModal.scrollTop = 0; }
+}
+if (bkModal) {
+  bkModal.addEventListener("close", function(){ placeDock(false); });
+  bkModal.addEventListener("click", function(e){ if (e.target === bkModal) bkModal.close(); });
+  $("bk-modal-close").addEventListener("click", function(){ bkModal.close(); });
+}
+function renderBooking(){
+  applyCapacity();
+  var d = datesText(), room = dRoom.value;
+  $("bk-dates").textContent = d || "Fechas sin elegir";
+  $("bk-guests").textContent = dGuests.value;
+  $("bk-room").textContent = room ? "Habitación " + room : "Habitación sin elegir";
+  var pics = {"Doble":"rum-doble-1.jpg","Twin":"rum-twin-1.jpg","Individual":"rum-indiv-1.jpg"};
+  $("bk-thumb").hidden = !room;
+  if (room) $("bk-thumb-img").src = "assets/" + pics[room];
+  $("bk-next").textContent = bkStep !== 1 ? ""
+    : (!d && !room) ? "Elige tus fechas y una habitación."
+    : !d ? "Falta elegir las fechas de entrada y salida."
+    : !room ? "Elige una habitación para seguir."
+    : "";
+  document.querySelectorAll("[data-room]").forEach(function(btn){
+    var on = btn.getAttribute("data-room") === room, card = btn.closest(".room-card"), note = card.querySelector(".room-note");
+    btn.textContent = on ? "Seguir con esta habitación" : "Reservar esta habitación";
+    card.classList.toggle("is-selected", on);
+    note.hidden = !on;
+    note.textContent = on ? (d ? "Habitación seleccionada." : "Seleccionada. Elige las fechas en Tu reserva para seguir.") : "";
+  });
+  dSum.textContent = d ? (shortDate(dIn.value) + " – " + shortDate(dOut.value) + " · " + dGuests.value.split(" ")[0] + " huésp." + (room ? " · " + room : ""))
+    : (room ? room + " · sin fechas" : "Fechas y huéspedes");
+}
+function setStep(n, moveFocus){
+  bkStep = n;
+  document.querySelectorAll(".bk-panel").forEach(function(p){ p.hidden = Number(p.getAttribute("data-panel")) !== n; });
+  document.querySelectorAll(".bk-steps li").forEach(function(li){
+    var s = Number(li.getAttribute("data-step"));
+    li.classList.toggle("is-current", s === n);
+    li.classList.toggle("is-done", s < n);
+    if (s === n) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+  });
+  $("bk-cart").hidden = n === 3;
+  $("bk-ask").hidden = true; $("bk-form-actions").hidden = false;
+  renderBooking();
+  if (moveFocus) {
+    if (bkModal) bkModal.scrollTop = 0; else window.scrollTo(0, Math.max(0, $("bk-steps").getBoundingClientRect().top + window.scrollY - 110));
+    document.querySelector('.bk-panel[data-panel="' + n + '"] h2').focus({preventScroll:true});
+  }
+}
+function askDates(){
+  if (!dock.classList.contains("in-cart")) setDock(true);
+  dIn.focus({preventScroll:true});
+  dock.classList.add("attn");
+  setTimeout(function(){ dock.classList.remove("attn"); }, 1800);
+}
+dock.addEventListener("change", function(){
+  renderBooking();
+  if (!$("bk-ask").hidden) { $("bk-ask").hidden = true; $("bk-form-actions").hidden = false; }
+  if (bkWait && bkStep === 1 && dRoom.value && nights()) { bkWait = false; setStep(2, true); }
+});
+dock.addEventListener("submit", function(e){
+  e.preventDefault();
+  if (dock.classList.contains("in-cart")) return;
+  if (!dFields.classList.contains("open")) { setDock(true); dIn.focus({preventScroll:true}); return; }
+  if (dMq.matches) setDock(false);
+  goBooking();
+});
+document.querySelectorAll("[data-room]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    dRoom.value = btn.getAttribute("data-room");
+    bkWait = !nights();
+    renderBooking();
+    if (bkWait) askDates(); else setStep(2, true);
+  });
+});
+$("bk-back").addEventListener("click", function(){ setStep(1, true); });
+var bkChecks = [
+  ["bk-name", function(v){ return v.trim().length >= 3; }, "Escribe tu nombre y apellido."],
+  ["bk-email", function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }, "Escribe un correo válido, por ejemplo nombre@correo.cl."],
+  ["bk-phone", function(v){ return v.replace(/\D/g, "").length >= 8; }, "Escribe un teléfono de al menos 8 dígitos."]
+];
+function checkField(c){
+  var el = $(c[0]), err = $(c[0] + "-err"), ok = c[1](el.value);
+  el.setAttribute("aria-invalid", String(!ok));
+  err.hidden = ok; err.textContent = ok ? "" : c[2];
+  return ok;
+}
+bkChecks.forEach(function(c){ $(c[0]).addEventListener("blur", function(){ if ($(c[0]).value || $(c[0]).getAttribute("aria-invalid") === "true") checkField(c); }); });
+$("bk-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  var first = null;
+  bkChecks.forEach(function(c){ if (!checkField(c) && !first) first = $(c[0]); });
+  if (first) { first.focus(); return; }
+  if (!dRoom.value || !nights()) { setStep(1, true); return; }
+  $("bk-ask-text").textContent = "Habitación " + dRoom.value + ", " + datesText() + ", " + dGuests.value + ", a nombre de " + $("bk-name").value.trim() + ".";
+  setAsk(true);
+});
+function setAsk(on){
+  $("bk-ask").hidden = !on;
+  $("bk-form-actions").hidden = on;
+  if (on) $("bk-ask-title").focus();
+}
+$("bk-ask-no").addEventListener("click", function(){ setAsk(false); $("bk-name").focus(); });
+$("bk-form").addEventListener("input", function(){ if (!$("bk-ask").hidden) setAsk(false); });
+$("bk-ask-yes").addEventListener("click", function(){
+  var bad = null;
+  bkChecks.forEach(function(c){ if (!checkField(c) && !bad) bad = $(c[0]); });
+  if (bad || !dRoom.value || !nights()) { setAsk(false); if (bad) bad.focus(); else setStep(1, true); return; }
+  $("c-room").textContent = "Habitación " + dRoom.value;
+  $("c-dates").textContent = datesText();
+  $("c-guests").textContent = dGuests.value;
+  $("c-name").textContent = $("bk-name").value.trim();
+  $("c-email").textContent = $("bk-email").value.trim();
+  $("c-phone").textContent = $("bk-phone").value.trim();
+  $("c-arrival").textContent = $("bk-arrival").value;
+  setStep(3, true);
+});
+function summaryText(){
+  return ["Reserva Hotel Infinity Park (demostración)", "Habitación: " + $("c-room").textContent, "Fechas: " + $("c-dates").textContent, "Huéspedes: " + $("c-guests").textContent, "A nombre de: " + $("c-name").textContent, "Llegada estimada: " + $("c-arrival").textContent, "Check-in desde las 14:00 · Check-out hasta las 12:00", "Merced N°54, Santiago"].join("\n");
+}
+$("bk-copy").addEventListener("click", function(){
+  var msg = $("bk-copied"), text = summaryText();
+  function ok(){ msg.textContent = "Resumen copiado."; }
+  function fail(){ msg.textContent = "No pudimos copiarlo automáticamente: selecciona el resumen y cópialo."; }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fail); else fail();
+});
+$("bk-new").addEventListener("click", function(){
+  $("bk-copied").textContent = "";
+  $("bk-form").reset();
+  bkChecks.forEach(function(c){ $(c[0]).removeAttribute("aria-invalid"); $(c[0] + "-err").hidden = true; });
+  dRoom.value = "";
+  setStep(1, true);
+});
+
+/* ---- galerías de las páginas de habitación ---- */
+document.querySelectorAll(".rp-gal").forEach(function(g){
+  var main = g.querySelector(".rm-main img");
+  g.querySelectorAll(".rm-thumbs button").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      main.src = btn.getAttribute("data-src"); main.alt = btn.getAttribute("data-alt");
+      g.querySelectorAll(".rm-thumbs button").forEach(function(o){ o.setAttribute("aria-pressed", String(o === btn)); });
+    });
+  });
+});
+
+show(location.hash.slice(1) || "inicio", false);
+</script>
+
+</body>
+</html>
