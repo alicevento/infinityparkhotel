@@ -148,6 +148,19 @@
   .lobby-strip figcaption{position:absolute;left:0;bottom:0;padding:6px 12px;background:rgba(2,0,58,.85);color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;}
   .duo-grid{margin-top:32px;}
   @media (max-width:760px){.lobby-strip{grid-template-columns:1fr 1fr;}.lobby-strip .lobby-main{grid-column:1/-1;aspect-ratio:16/10;}}
+
+  /* secciones con foto grande y texto a un lado, como The Damai */
+  .split{padding-block:clamp(40px,6vw,88px);}
+  .split-row{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;}
+  .split-rev .split-row{grid-template-columns:1fr 1.15fr;}
+  .split-rev .photo{order:2;}
+  .split .photo{aspect-ratio:4/3;}
+  .split .photo img{width:100%;height:100%;object-fit:cover;}
+  .split-text .title{margin:12px 0 16px;}
+  .split-text p{color:var(--soft);max-width:44ch;}
+  .txt-link{display:inline-block;margin-top:22px;padding:6px 0;color:var(--brand);font:500 13px/1.2 "Jost",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--brand);}
+  @media (hover:hover){.txt-link:hover{color:var(--gold-deep);border-color:var(--gold-deep);}}
+  @media (max-width:860px){.split-row,.split-rev .split-row{grid-template-columns:1fr;}.split-rev .photo{order:0;}}
   /* coffee & conferencias en el inicio */
   .duo-sec{padding-block:clamp(48px,7vw,96px);}
   .duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,36px);margin-top:44px;}
@@ -720,44 +733,26 @@
     <p class="more"><a class="more-link" href="#habitaciones">Ver todas las habitaciones</a></p>
   </section>
 
-  <section class="duo-sec" aria-labelledby="duo-t">
-    <div class="wrap">
-      <div class="center lede">
-        <p class="caps">Más en Hotel Infinity</p>
-        <h2 class="title" id="duo-t" style="margin-top:12px;">Para tu mañana y para tus <em>encuentros</em></h2>
+  <section class="split">
+    <div class="wrap split-row">
+      <div class="photo"><img src="assets/comida-desayuno.jpg" alt="Desayuno servido con jugos naturales" loading="lazy"></div>
+      <div class="split-text">
+        <p class="caps">Coffee &amp; Cowork</p>
+        <h2 class="title">Comienza tu día con <em>calma</em></h2>
+        <p>Desayuno buffet incluido en tu tarifa y un espacio cómodo para una pausa, conversar o avanzar en tus pendientes, en el entorno de Plaza Italia.</p>
+        <a class="txt-link" href="#coffee-cowork">Conocer Coffee &amp; Cowork</a>
       </div>
-      <div class="lobby-strip">
-        <figure class="photo lobby-main"><img src="assets/rum-hotel-1.jpg" alt="Lobby del hotel con sillones de cuero y mesón de recepción al fondo" loading="lazy"><figcaption>El lobby</figcaption></figure>
-        <figure class="photo"><img src="assets/rum-hotel-3.jpg" alt="Mesón de recepción" loading="lazy"><figcaption>Recepción</figcaption></figure>
-        <figure class="photo"><img src="assets/lobby-sala.jpg" alt="Sala del lobby con sillones y ventanales" loading="lazy"><figcaption>Sala de estar</figcaption></figure>
-      </div>
-      <div class="duo-grid">
-        <article class="duo-card">
-          <div class="photo"><img src="assets/comida-desayuno.jpg" alt="Desayuno servido con jugos naturales" loading="lazy"></div>
-          <div class="duo-body">
-            <h3>Coffee &amp; Cowork</h3>
-            <p>Desayuno buffet incluido en tu tarifa y un espacio cómodo para una pausa, conversar o avanzar en tus pendientes.</p>
-            <ul class="duo-facts">
-              <li>Desayuno buffet incluido</li>
-              <li>Lunes a viernes, 07:00 a 10:00</li>
-              <li>Sábados, domingos y festivos, 07:30 a 10:30</li>
-            </ul>
-            <a class="btn ghost" href="#coffee-cowork">Conocer Coffee &amp; Cowork</a>
-          </div>
-        </article>
-        <article class="duo-card">
-          <div class="photo"><img src="assets/rum-hotel-5.jpg" alt="Salón del octavo piso con columnas verdes y mesas de madera" loading="lazy"></div>
-          <div class="duo-body">
-            <h3>Conferencias</h3>
-            <p>Un salón en el octavo piso para conferencias, reuniones de trabajo, capacitaciones y celebraciones, con una propuesta a medida.</p>
-            <ul class="duo-facts">
-              <li>Salón en el octavo piso</li>
-              <li>Eventos a medida</li>
-              <li>Almuerzos y cenas para grupos, con reserva previa</li>
-            </ul>
-            <a class="btn ghost" href="#conferencias">Solicitar una cotización</a>
-          </div>
-        </article>
+    </div>
+  </section>
+
+  <section class="split split-rev">
+    <div class="wrap split-row">
+      <div class="photo"><img src="assets/rum-hotel-5.jpg" alt="Salón del octavo piso con columnas verdes y mesas de madera" loading="lazy"></div>
+      <div class="split-text">
+        <p class="caps">Conferencias</p>
+        <h2 class="title">Encuentros en el <em>octavo piso</em></h2>
+        <p>Un salón para conferencias, reuniones de trabajo, capacitaciones y celebraciones, con una propuesta a medida.</p>
+        <a class="txt-link" href="#conferencias">Solicitar una cotización</a>
       </div>
     </div>
   </section>
