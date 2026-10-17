@@ -86,12 +86,12 @@
   /* ---------- inicio ---------- */
   .hero{position:relative;height:min(88vh,740px);min-height:520px;overflow:hidden;isolation:isolate;}
   .hero > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,2,40,.66),rgba(4,2,40,.4) 60%,rgba(4,2,40,.3));}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,2,40,.74),rgba(4,2,40,.56) 55%,rgba(4,2,40,.5));}
   .hero-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding:30px 20px 120px;color:#fff;}
   .hero-copy .sym{width:46px;height:auto;}
-  .hero-copy .caps{color:#E3E6F9;}
+  .hero-copy .caps{color:#fff;background:rgba(2,0,58,.82);padding:9px 18px;font-size:14px;font-weight:500;letter-spacing:.2em;}
   .hero-copy h1{font-style:italic;font-size:clamp(38px,6.4vw,84px);color:#fff;max-width:17ch;text-shadow:0 2px 26px rgba(4,2,40,.5);}
-  .hero-copy p.sub{color:#E8EAFA;max-width:48ch;font-size:17px;}
+  .hero-copy p.sub{color:#fff;max-width:48ch;font-size:18px;text-shadow:0 1px 16px rgba(2,0,58,.9),0 0 3px rgba(2,0,58,.6);}
 
   /* ---------- reservar: buscador horizontal siempre a la mano ---------- */
   .search-bar{
@@ -592,6 +592,15 @@
   .crumbs li{display:flex;align-items:center;min-height:32px;}
   .crumbs li + li::before{margin-right:8px;line-height:1;}
   .crumbs a,.crumbs [aria-current]{display:inline-flex;align-items:center;padding-block:4px;line-height:1.2;}
+
+  /* pantalla de carga: HOTEL INFINITY recorre el infinito */
+  .loader{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;background:var(--paper,#F8F4EB);transition:opacity 500ms ease,visibility 0s linear 500ms;animation:loader-fuse 0s linear 6s forwards;}
+  .loader.is-done{opacity:0;visibility:hidden;pointer-events:none;}
+  @keyframes loader-fuse{to{opacity:0;visibility:hidden;pointer-events:none;}}
+  .loader-svg{width:min(320px,max(200px,42vw));height:auto;overflow:visible;}
+  .loader-text{font:600 17px "Jost","Segoe UI",Arial,sans-serif;letter-spacing:.12em;fill:var(--brand,#040055);}
+  .loader-text .dot{fill:#B0905F;font-family:"Segoe UI Symbol","Apple Symbols","DejaVu Sans","Noto Sans Symbols2",sans-serif;font-weight:400;letter-spacing:0;}
+  @media (prefers-reduced-motion:reduce){.loader{transition:none;}}
   .nav-inline a{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;}
   :root{--pg-accent:var(--brand);--pg-soft:var(--soft);--pg-surface:var(--paper-2);--pg-border:1px solid var(--line);--pg-align:center;}
   .pg-hero h1{font-style:italic;}
@@ -634,6 +643,14 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500&display=swap">
 
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <svg viewBox="0 0 560 260" class="loader-svg" aria-hidden="true" focusable="false">
+    <path id="ld-one" d="M515.0 130.0 L514.8 137.7 L514.0 145.3 L512.8 152.8 L511.2 160.2 L509.1 167.4 L506.6 174.3 L503.6 180.9 L500.3 187.3 L496.7 193.2 L492.7 198.8 L488.5 204.0 L484.0 208.8 L479.3 213.2 L474.4 217.1 L469.4 220.6 L464.2 223.7 L458.9 226.3 L453.6 228.5 L448.2 230.3 L442.8 231.8 L437.4 232.8 L432.0 233.5 L426.6 233.8 L421.3 233.8 L416.0 233.5 L410.8 232.9 L405.7 232.0 L400.6 230.9 L395.7 229.5 L390.8 227.9 L386.0 226.1 L381.3 224.1 L376.7 221.9 L372.2 219.6 L367.8 217.1 L363.5 214.4 L359.3 211.7 L355.1 208.8 L351.1 205.8 L347.1 202.7 L343.3 199.5 L339.5 196.2 L335.8 192.9 L332.1 189.5 L328.5 186.0 L325.0 182.5 L321.5 178.9 L318.1 175.3 L314.8 171.7 L311.5 168.0 L308.2 164.3 L305.0 160.5 L301.8 156.8 L298.6 153.0 L295.5 149.2 L292.3 145.4 L289.2 141.5 L286.2 137.7 L283.1 133.8 L280.0 130.0 L276.9 126.2 L273.8 122.3 L270.8 118.5 L267.7 114.6 L264.5 110.8 L261.4 107.0 L258.2 103.2 L255.0 99.5 L251.8 95.7 L248.5 92.0 L245.2 88.3 L241.9 84.7 L238.5 81.1 L235.0 77.5 L231.5 74.0 L227.9 70.5 L224.2 67.1 L220.5 63.8 L216.7 60.5 L212.9 57.3 L208.9 54.2 L204.9 51.2 L200.7 48.3 L196.5 45.6 L192.2 42.9 L187.8 40.4 L183.3 38.1 L178.7 35.9 L174.0 33.9 L169.2 32.1 L164.3 30.5 L159.4 29.1 L154.3 28.0 L149.2 27.1 L144.0 26.5 L138.7 26.2 L133.4 26.2 L128.0 26.5 L122.6 27.2 L117.2 28.2 L111.8 29.7 L106.4 31.5 L101.1 33.7 L95.8 36.3 L90.6 39.4 L85.6 42.9 L80.7 46.8 L76.0 51.2 L71.5 56.0 L67.3 61.2 L63.3 66.8 L59.7 72.7 L56.4 79.1 L53.4 85.7 L50.9 92.6 L48.8 99.8 L47.2 107.2 L46.0 114.7 L45.2 122.3 L45.0 130.0 L45.2 137.7 L46.0 145.3 L47.2 152.8 L48.8 160.2 L50.9 167.4 L53.4 174.3 L56.4 180.9 L59.7 187.3 L63.3 193.2 L67.3 198.8 L71.5 204.0 L76.0 208.8 L80.7 213.2 L85.6 217.1 L90.6 220.6 L95.8 223.7 L101.1 226.3 L106.4 228.5 L111.8 230.3 L117.2 231.8 L122.6 232.8 L128.0 233.5 L133.4 233.8 L138.7 233.8 L144.0 233.5 L149.2 232.9 L154.3 232.0 L159.4 230.9 L164.3 229.5 L169.2 227.9 L174.0 226.1 L178.7 224.1 L183.3 221.9 L187.8 219.6 L192.2 217.1 L196.5 214.4 L200.7 211.7 L204.9 208.8 L208.9 205.8 L212.9 202.7 L216.7 199.5 L220.5 196.2 L224.2 192.9 L227.9 189.5 L231.5 186.0 L235.0 182.5 L238.5 178.9 L241.9 175.3 L245.2 171.7 L248.5 168.0 L251.8 164.3 L255.0 160.5 L258.2 156.8 L261.4 153.0 L264.5 149.2 L267.7 145.4 L270.8 141.5 L273.8 137.7 L276.9 133.8 L280.0 130.0 L283.1 126.2 L286.2 122.3 L289.2 118.5 L292.3 114.6 L295.5 110.8 L298.6 107.0 L301.8 103.2 L305.0 99.5 L308.2 95.7 L311.5 92.0 L314.8 88.3 L318.1 84.7 L321.5 81.1 L325.0 77.5 L328.5 74.0 L332.1 70.5 L335.8 67.1 L339.5 63.8 L343.3 60.5 L347.1 57.3 L351.1 54.2 L355.1 51.2 L359.3 48.3 L363.5 45.6 L367.8 42.9 L372.2 40.4 L376.7 38.1 L381.3 35.9 L386.0 33.9 L390.8 32.1 L395.7 30.5 L400.6 29.1 L405.7 28.0 L410.8 27.1 L416.0 26.5 L421.3 26.2 L426.6 26.2 L432.0 26.5 L437.4 27.2 L442.8 28.2 L448.2 29.7 L453.6 31.5 L458.9 33.7 L464.2 36.3 L469.4 39.4 L474.4 42.9 L479.3 46.8 L484.0 51.2 L488.5 56.0 L492.7 61.2 L496.7 66.8 L500.3 72.7 L503.6 79.1 L506.6 85.7 L509.1 92.6 L511.2 99.8 L512.8 107.2 L514.0 114.7 L514.8 122.3 Z" fill="none" stroke="none"/>
+    <path id="ld-two" d="M515.0 130.0 L514.8 137.7 L514.0 145.3 L512.8 152.8 L511.2 160.2 L509.1 167.4 L506.6 174.3 L503.6 180.9 L500.3 187.3 L496.7 193.2 L492.7 198.8 L488.5 204.0 L484.0 208.8 L479.3 213.2 L474.4 217.1 L469.4 220.6 L464.2 223.7 L458.9 226.3 L453.6 228.5 L448.2 230.3 L442.8 231.8 L437.4 232.8 L432.0 233.5 L426.6 233.8 L421.3 233.8 L416.0 233.5 L410.8 232.9 L405.7 232.0 L400.6 230.9 L395.7 229.5 L390.8 227.9 L386.0 226.1 L381.3 224.1 L376.7 221.9 L372.2 219.6 L367.8 217.1 L363.5 214.4 L359.3 211.7 L355.1 208.8 L351.1 205.8 L347.1 202.7 L343.3 199.5 L339.5 196.2 L335.8 192.9 L332.1 189.5 L328.5 186.0 L325.0 182.5 L321.5 178.9 L318.1 175.3 L314.8 171.7 L311.5 168.0 L308.2 164.3 L305.0 160.5 L301.8 156.8 L298.6 153.0 L295.5 149.2 L292.3 145.4 L289.2 141.5 L286.2 137.7 L283.1 133.8 L280.0 130.0 L276.9 126.2 L273.8 122.3 L270.8 118.5 L267.7 114.6 L264.5 110.8 L261.4 107.0 L258.2 103.2 L255.0 99.5 L251.8 95.7 L248.5 92.0 L245.2 88.3 L241.9 84.7 L238.5 81.1 L235.0 77.5 L231.5 74.0 L227.9 70.5 L224.2 67.1 L220.5 63.8 L216.7 60.5 L212.9 57.3 L208.9 54.2 L204.9 51.2 L200.7 48.3 L196.5 45.6 L192.2 42.9 L187.8 40.4 L183.3 38.1 L178.7 35.9 L174.0 33.9 L169.2 32.1 L164.3 30.5 L159.4 29.1 L154.3 28.0 L149.2 27.1 L144.0 26.5 L138.7 26.2 L133.4 26.2 L128.0 26.5 L122.6 27.2 L117.2 28.2 L111.8 29.7 L106.4 31.5 L101.1 33.7 L95.8 36.3 L90.6 39.4 L85.6 42.9 L80.7 46.8 L76.0 51.2 L71.5 56.0 L67.3 61.2 L63.3 66.8 L59.7 72.7 L56.4 79.1 L53.4 85.7 L50.9 92.6 L48.8 99.8 L47.2 107.2 L46.0 114.7 L45.2 122.3 L45.0 130.0 L45.2 137.7 L46.0 145.3 L47.2 152.8 L48.8 160.2 L50.9 167.4 L53.4 174.3 L56.4 180.9 L59.7 187.3 L63.3 193.2 L67.3 198.8 L71.5 204.0 L76.0 208.8 L80.7 213.2 L85.6 217.1 L90.6 220.6 L95.8 223.7 L101.1 226.3 L106.4 228.5 L111.8 230.3 L117.2 231.8 L122.6 232.8 L128.0 233.5 L133.4 233.8 L138.7 233.8 L144.0 233.5 L149.2 232.9 L154.3 232.0 L159.4 230.9 L164.3 229.5 L169.2 227.9 L174.0 226.1 L178.7 224.1 L183.3 221.9 L187.8 219.6 L192.2 217.1 L196.5 214.4 L200.7 211.7 L204.9 208.8 L208.9 205.8 L212.9 202.7 L216.7 199.5 L220.5 196.2 L224.2 192.9 L227.9 189.5 L231.5 186.0 L235.0 182.5 L238.5 178.9 L241.9 175.3 L245.2 171.7 L248.5 168.0 L251.8 164.3 L255.0 160.5 L258.2 156.8 L261.4 153.0 L264.5 149.2 L267.7 145.4 L270.8 141.5 L273.8 137.7 L276.9 133.8 L280.0 130.0 L283.1 126.2 L286.2 122.3 L289.2 118.5 L292.3 114.6 L295.5 110.8 L298.6 107.0 L301.8 103.2 L305.0 99.5 L308.2 95.7 L311.5 92.0 L314.8 88.3 L318.1 84.7 L321.5 81.1 L325.0 77.5 L328.5 74.0 L332.1 70.5 L335.8 67.1 L339.5 63.8 L343.3 60.5 L347.1 57.3 L351.1 54.2 L355.1 51.2 L359.3 48.3 L363.5 45.6 L367.8 42.9 L372.2 40.4 L376.7 38.1 L381.3 35.9 L386.0 33.9 L390.8 32.1 L395.7 30.5 L400.6 29.1 L405.7 28.0 L410.8 27.1 L416.0 26.5 L421.3 26.2 L426.6 26.2 L432.0 26.5 L437.4 27.2 L442.8 28.2 L448.2 29.7 L453.6 31.5 L458.9 33.7 L464.2 36.3 L469.4 39.4 L474.4 42.9 L479.3 46.8 L484.0 51.2 L488.5 56.0 L492.7 61.2 L496.7 66.8 L500.3 72.7 L503.6 79.1 L506.6 85.7 L509.1 92.6 L511.2 99.8 L512.8 107.2 L514.0 114.7 L514.8 122.3 L515.0 130.0 L514.8 137.7 L514.0 145.3 L512.8 152.8 L511.2 160.2 L509.1 167.4 L506.6 174.3 L503.6 180.9 L500.3 187.3 L496.7 193.2 L492.7 198.8 L488.5 204.0 L484.0 208.8 L479.3 213.2 L474.4 217.1 L469.4 220.6 L464.2 223.7 L458.9 226.3 L453.6 228.5 L448.2 230.3 L442.8 231.8 L437.4 232.8 L432.0 233.5 L426.6 233.8 L421.3 233.8 L416.0 233.5 L410.8 232.9 L405.7 232.0 L400.6 230.9 L395.7 229.5 L390.8 227.9 L386.0 226.1 L381.3 224.1 L376.7 221.9 L372.2 219.6 L367.8 217.1 L363.5 214.4 L359.3 211.7 L355.1 208.8 L351.1 205.8 L347.1 202.7 L343.3 199.5 L339.5 196.2 L335.8 192.9 L332.1 189.5 L328.5 186.0 L325.0 182.5 L321.5 178.9 L318.1 175.3 L314.8 171.7 L311.5 168.0 L308.2 164.3 L305.0 160.5 L301.8 156.8 L298.6 153.0 L295.5 149.2 L292.3 145.4 L289.2 141.5 L286.2 137.7 L283.1 133.8 L280.0 130.0 L276.9 126.2 L273.8 122.3 L270.8 118.5 L267.7 114.6 L264.5 110.8 L261.4 107.0 L258.2 103.2 L255.0 99.5 L251.8 95.7 L248.5 92.0 L245.2 88.3 L241.9 84.7 L238.5 81.1 L235.0 77.5 L231.5 74.0 L227.9 70.5 L224.2 67.1 L220.5 63.8 L216.7 60.5 L212.9 57.3 L208.9 54.2 L204.9 51.2 L200.7 48.3 L196.5 45.6 L192.2 42.9 L187.8 40.4 L183.3 38.1 L178.7 35.9 L174.0 33.9 L169.2 32.1 L164.3 30.5 L159.4 29.1 L154.3 28.0 L149.2 27.1 L144.0 26.5 L138.7 26.2 L133.4 26.2 L128.0 26.5 L122.6 27.2 L117.2 28.2 L111.8 29.7 L106.4 31.5 L101.1 33.7 L95.8 36.3 L90.6 39.4 L85.6 42.9 L80.7 46.8 L76.0 51.2 L71.5 56.0 L67.3 61.2 L63.3 66.8 L59.7 72.7 L56.4 79.1 L53.4 85.7 L50.9 92.6 L48.8 99.8 L47.2 107.2 L46.0 114.7 L45.2 122.3 L45.0 130.0 L45.2 137.7 L46.0 145.3 L47.2 152.8 L48.8 160.2 L50.9 167.4 L53.4 174.3 L56.4 180.9 L59.7 187.3 L63.3 193.2 L67.3 198.8 L71.5 204.0 L76.0 208.8 L80.7 213.2 L85.6 217.1 L90.6 220.6 L95.8 223.7 L101.1 226.3 L106.4 228.5 L111.8 230.3 L117.2 231.8 L122.6 232.8 L128.0 233.5 L133.4 233.8 L138.7 233.8 L144.0 233.5 L149.2 232.9 L154.3 232.0 L159.4 230.9 L164.3 229.5 L169.2 227.9 L174.0 226.1 L178.7 224.1 L183.3 221.9 L187.8 219.6 L192.2 217.1 L196.5 214.4 L200.7 211.7 L204.9 208.8 L208.9 205.8 L212.9 202.7 L216.7 199.5 L220.5 196.2 L224.2 192.9 L227.9 189.5 L231.5 186.0 L235.0 182.5 L238.5 178.9 L241.9 175.3 L245.2 171.7 L248.5 168.0 L251.8 164.3 L255.0 160.5 L258.2 156.8 L261.4 153.0 L264.5 149.2 L267.7 145.4 L270.8 141.5 L273.8 137.7 L276.9 133.8 L280.0 130.0 L283.1 126.2 L286.2 122.3 L289.2 118.5 L292.3 114.6 L295.5 110.8 L298.6 107.0 L301.8 103.2 L305.0 99.5 L308.2 95.7 L311.5 92.0 L314.8 88.3 L318.1 84.7 L321.5 81.1 L325.0 77.5 L328.5 74.0 L332.1 70.5 L335.8 67.1 L339.5 63.8 L343.3 60.5 L347.1 57.3 L351.1 54.2 L355.1 51.2 L359.3 48.3 L363.5 45.6 L367.8 42.9 L372.2 40.4 L376.7 38.1 L381.3 35.9 L386.0 33.9 L390.8 32.1 L395.7 30.5 L400.6 29.1 L405.7 28.0 L410.8 27.1 L416.0 26.5 L421.3 26.2 L426.6 26.2 L432.0 26.5 L437.4 27.2 L442.8 28.2 L448.2 29.7 L453.6 31.5 L458.9 33.7 L464.2 36.3 L469.4 39.4 L474.4 42.9 L479.3 46.8 L484.0 51.2 L488.5 56.0 L492.7 61.2 L496.7 66.8 L500.3 72.7 L503.6 79.1 L506.6 85.7 L509.1 92.6 L511.2 99.8 L512.8 107.2 L514.0 114.7 L514.8 122.3" fill="none" stroke="none"/>
+    <text class="loader-text"><textPath id="ld-tp" href="#ld-two" startOffset="0"></textPath></text>
+  </svg>
+  <span class="sr">Cargando Hotel Infinity</span>
+</div>
 <header>
   <div class="wrap bar">
     <div class="hdr-left"><button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
@@ -1540,6 +1557,32 @@ document.addEventListener("input", syncDates); document.addEventListener("change
     f.hidden = true; $q("qt-done").hidden = false; $q("qt-done").focus();
   });
   $q("qt-again").addEventListener("click", function(){ f.reset(); $q("qt-done").hidden = true; f.hidden = false; $q("qt-name").focus(); });
+})();
+(function(){
+  var ld = document.getElementById("loader"); if (!ld) return;
+  var one = document.getElementById("ld-one"), tp = document.getElementById("ld-tp");
+  var reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var t0 = Date.now(), K = 4;
+  function build(){
+    var L = one.getTotalLength(), NS = "http://www.w3.org/2000/svg";
+    while (tp.firstChild) tp.removeChild(tp.firstChild);
+    for (var i = 0; i < K; i++) {
+      tp.appendChild(document.createTextNode("HOTEL INFINITY"));
+      var d = document.createElementNS(NS, "tspan"); d.setAttribute("class", "dot"); d.textContent = "  ✦  "; tp.appendChild(d);
+    }
+    var text = tp.parentNode, len = text.getComputedTextLength();
+    if (len > 0) { var fs = parseFloat(getComputedStyle(text).fontSize) * (L / len); text.style.fontSize = fs + "px"; }
+    var period = L / K;
+    if (!reduce) {
+      var a = document.createElementNS(NS, "animate");
+      a.setAttribute("attributeName", "startOffset"); a.setAttribute("from", "0"); a.setAttribute("to", String(period));
+      a.setAttribute("dur", "4.5s"); a.setAttribute("repeatCount", "indefinite"); tp.appendChild(a);
+    }
+  }
+  function done(){ ld.classList.add("is-done"); setTimeout(function(){ if (ld.parentNode) ld.parentNode.removeChild(ld); }, 900); }
+  function finish(){ var wait = Math.max(0, (reduce ? 400 : 2800) - (Date.now() - t0)); setTimeout(done, wait); }
+  try { (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(build, build); } catch (e) { build(); }
+  if (document.readyState === "complete") finish(); else window.addEventListener("load", finish);
 })();
 show(location.hash.slice(1) || "inicio", false);
 </script>
