@@ -28,7 +28,7 @@
   h2.title{font-size:clamp(32px,4.2vw,52px);}
   em{font-style:italic;}
   h2.title em{color:var(--brand);}
-  p{margin:0;line-height:1.75;text-wrap:pretty;}
+  p{margin:0;line-height:1.5;text-wrap:pretty;}
   :focus-visible{outline:2px solid var(--brand);outline-offset:3px;}
   .wrap{width:min(1140px,calc(100% - 40px));margin:0 auto;}
   .center{text-align:center;}
@@ -621,7 +621,7 @@
   @media (hover:hover) and (pointer:fine){.menu-panel a:hover{color:#C9CEF3;transform:translateX(10px);}}
   .menu-side{color:#DDE0F6;font-size:15px;}\n  .menu-social{width:min(1140px,calc(100% - 40px));margin:0 auto;padding:0 0 22px;}\n  .menu-social a{color:#fff;}
   .menu-side .photo{aspect-ratio:4/3;margin-bottom:20px;}
-  .menu-side p{line-height:1.8;}
+  .menu-side p{line-height:1.5;}
   @media (max-width:860px){
     .menu-panel{top:67px;}
     .menu-inner{grid-template-columns:1fr;align-items:start;}
@@ -640,12 +640,6 @@
     .menu-btn svg{display:none;}
     .head-cta.btn.sm{padding:12px 12px;letter-spacing:.08em;}
   }
-/*<!--logo-picker-->*/
-  .logo-picker{position:fixed;left:10px;bottom:10px;z-index:900;display:flex;flex-direction:column;gap:2px;max-width:220px;background:#fff;color:#14123D;border:1px solid #040055;padding:8px;font:500 12px/1.3 "Jost",sans-serif;box-shadow:0 8px 24px -10px rgba(0,0,0,.4);}
-  .logo-picker b{font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:11px;margin-bottom:2px;}
-  .logo-picker a{display:block;padding:4px 6px;color:#040055;text-decoration:none;}
-  .logo-picker a[aria-current="true"]{background:#040055;color:#fff;}
-  @media (max-width:860px){.logo-picker{bottom:auto;top:84px;left:6px;max-width:150px;font-size:11px;}}
 </style>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500&display=swap">
@@ -712,12 +706,17 @@
       <img class="sym" src="assets/simbolo-light.png" alt="">
       <p class="caps">Hotel Infinity · Santiago</p>
       <h1 tabindex="-1">Descubre nuestro hotel en la mejor ubicación de Santiago</h1>
-      <p class="sub">En Hotel Infinity Park, disfruta de una estadía cómoda y tranquila en pleno corazón de Santiago, junto a Plaza Italia. A pasos del Metro, Patio Bellavista y Barrio Lastarria, y con fácil acceso a Barrio Italia, nuestra ubicación te conecta con los principales centros de negocios, atractivos culturales y espacios gastronómicos de la ciudad. El lugar ideal para combinar trabajo, descanso y turismo.</p>
+      <p class="sub">Tu estadía en Santiago, junto a Plaza Italia.</p>
     </div>
   </div>
 
+  <section style="padding-block:clamp(48px,7vw,80px) 0;">
+    <div class="center lede">
+      <p>En Hotel Infinity Park, disfruta de una estadía cómoda y tranquila en pleno corazón de Santiago, junto a Plaza Italia. A pasos del Metro, Patio Bellavista y Barrio Lastarria, y con fácil acceso a Barrio Italia, nuestra ubicación te conecta con los principales centros de negocios, atractivos culturales y espacios gastronómicos de la ciudad. El lugar ideal para combinar trabajo, descanso y turismo.</p>
+    </div>
+  </section>
 
-  <section style="padding-block:44px 0;">
+  <section style="padding-block:28px 44px;">
     <div class="wrap center">
       <p class="caps">Reserva directa</p>
       <ul class="facts">
@@ -1594,6 +1593,5 @@ document.addEventListener("input", syncDates); document.addEventListener("change
 })();
 show(location.hash.slice(1) || "inicio", false);
 </script>
-<!--logo-picker--><nav class="logo-picker" aria-label="Propuestas de logo"><b>Propuestas de logo</b><a href="logos/actual/" aria-current="true">Logo actual</a><a href="logos/cinta/">Logo 1 · Cinta original refinada</a><a href="logos/monograma-in/">Logo 2 · Infinity en una línea</a><a href="logos/puntos/">Logo 3 · Infinity con puntos</a><a href="logos/">Comparar todos</a></nav><!--/logo-picker-->
 </body>
 </html>
