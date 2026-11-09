@@ -114,6 +114,18 @@
   @media (hover:hover){.search-bar .btn:hover{background:#fff;color:var(--brand);}}
   @media (pointer:coarse){.search-bar input,.search-bar select{font-size:16px;}}
 
+  .dock-hide{flex-shrink:0;width:44px;align-self:stretch;display:grid;place-items:center;border:0;border-left:1px solid rgba(255,255,255,.28);background:transparent;color:#E3E6F9;font-size:15px;line-height:1;cursor:pointer;transition:background-color 150ms ease,color 150ms ease;}
+  .dock-hide:hover{background:rgba(255,255,255,.12);color:#fff;}
+  #dock.in-cart .dock-hide,#dock.search-bar-hidden{display:none;}
+  .dock-reopen{
+    display:none;position:fixed;left:0;right:0;margin-inline:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:40;
+    width:max-content;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(255,255,255,.3);
+    background:rgba(2,0,58,.97);color:#fff;font:500 13px/1 "Jost",sans-serif;letter-spacing:.14em;text-transform:uppercase;
+    cursor:pointer;box-shadow:0 18px 44px -18px rgba(4,2,40,.7);
+  }
+  .dock-reopen:not([hidden]){display:inline-flex;}
+  @media (hover:hover){.dock-reopen:hover{background:#fff;color:var(--brand);}}
+
   section{padding-block:clamp(60px,8vw,104px);}
 
   .facts{display:flex;justify-content:center;gap:12px 44px;flex-wrap:wrap;margin:18px 0 0;padding:0;}
@@ -695,8 +707,10 @@
     <div class="dock-row">
       <button type="button" class="dock-toggle" aria-expanded="false" aria-controls="dock-fields"><span class="dock-summary">Fechas y huéspedes</span><svg width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 7l6-6 6 6" stroke="currentColor" stroke-width="1.8"/></svg></button>
       <button class="btn white" type="submit">Reservar</button>
+      <button type="button" class="dock-hide" id="dock-hide" aria-label="Ocultar barra de reserva" title="Ocultar barra de reserva">✕</button>
     </div>
   </form>
+  <button type="button" class="dock-reopen" id="dock-reopen" hidden>Reservar<svg width="12" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.8"/></svg></button>
 
 <main>
   <div class="view" data-view="inicio">
@@ -1208,6 +1222,13 @@ dIn.addEventListener("change", function(){
   if (!dOut.value || dOut.value <= dIn.value) dOut.value = iso(next);
 });
 function setDock(o){ dFields.classList.toggle("open", o); dock.classList.toggle("is-open", o); dTog.setAttribute("aria-expanded", String(o)); }
+var dHide = document.getElementById("dock-hide"), dReopen = document.getElementById("dock-reopen");
+function setBarHidden(hidden){
+  dock.classList.toggle("search-bar-hidden", hidden);
+  if (dReopen) dReopen.hidden = !hidden;
+}
+if (dHide) dHide.addEventListener("click", function(){ setDock(false); setBarHidden(true); if (dReopen) dReopen.focus(); });
+if (dReopen) dReopen.addEventListener("click", function(){ setBarHidden(false); dHide.focus(); });
 var dClose = dock.querySelector(".dock-close");
 if (dClose) dClose.addEventListener("click", function(){ setDock(false); dTog.focus(); });
 if (!dMq.matches) setDock(true);
@@ -1243,7 +1264,7 @@ var bkStep = 1, bkWait = false, bkShowAll = false;
 var bkModal = document.getElementById("bk-modal");
 function placeDock(inCart){
   var slot = $("bk-dock-slot");
-  if (inCart) { if (dock.parentElement !== slot) { slot.appendChild(dock); dock.classList.add("in-cart"); } }
+  if (inCart) { if (dock.parentElement !== slot) { slot.appendChild(dock); dock.classList.add("in-cart"); } setBarHidden(false); }
   else if (dock.parentElement === slot) { document.querySelector("header").after(dock); dock.classList.remove("in-cart"); }
 }
 function enterBooking(){
