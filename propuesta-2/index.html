@@ -302,6 +302,9 @@
   .gal-grid > :last-child:nth-child(4n+2){grid-column:span 3;}
   .gal-grid .photo{aspect-ratio:4/3;border-radius:var(--pg-r-sm,0);}
   .cc-gal-grid > :last-child{grid-column:auto!important;}
+  .cc-gal-btn{display:block;width:100%;border:0;padding:0;margin:0;background:none;cursor:pointer;font:inherit;}
+  @media (hover:hover){.cc-gal-btn:hover img{transform:scale(1.04);}}
+  .cc-gal-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px;}
   .bk-summary{background:var(--pg-surface);border:var(--pg-border);border-radius:var(--pg-r-sm,0);padding:16px 20px;font-size:17px;margin-bottom:24px;}
   .bk-steps{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;list-style:none;margin:0 0 22px;padding:2px;counter-reset:paso;}
   .bk-steps::-webkit-scrollbar{display:none;}
@@ -857,18 +860,27 @@
         <article class="cc-card"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 9h2a2 2 0 0 1 0 5h-2M8 3v2M12 3v2"/></svg>Desayuno buffet incluido</h3><p>Una buena estadía comienza con una mañana que se disfruta. Nuestro desayuno buffet te invita a elegir a tu gusto y compartir un momento agradable antes de salir a descubrir Santiago o comenzar tu jornada de trabajo. Un despertar tranquilo, con la calidez que hace de tu viaje una experiencia cercana y acogedora.</p><p class="cc-note">El desayuno buffet está incluido en la tarifa de alojamiento.</p></article>
         <article class="cc-card"><h3><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M2 19h20"/></svg>Un espacio cómodo y calmo</h3><p>Encuentra un momento de calma en medio del ritmo de la ciudad. Un ambiente acogedor para conversar, revisar tus correos o avanzar en tus pendientes con tranquilidad. Ya sea que viajes por trabajo o por descanso, disfruta de un espacio que acompaña tu mañana y te permite comenzar el día a tu propio ritmo.</p></article>
       </div>
-      <div class="gal-grid cc-gal-grid" style="margin-bottom:clamp(28px,4vw,48px);">
-        <div class="photo"><img src="assets/cowork-salon-2.jpg" alt="Salón Coffee & Cowork con mesón de desayuno y espejo" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-pan-tostadora.jpg" alt="Tostadora y canastos de pan en el buffet" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-jugos-cafe.jpg" alt="Dispensadores de jugo, café y té del buffet" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-fiambres.jpg" alt="Tabla de quesos, salame y jamón" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-salon-4.jpg" alt="Mesas del salón Coffee & Cowork con vista a la ciudad" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-salon-3.jpg" alt="Mesón de desayuno junto al muro verde" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-tv-pan.jpg" alt="Sala con TV y mesón de pan y cereales" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-buffet-completo.jpg" alt="Buffet completo con frutas, cereales y pastelería" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-salon-6.jpg" alt="Salón Coffee & Cowork con afiches y dispensadores de bebidas" loading="lazy"></div>
-        <div class="photo"><img src="assets/cowork-salon-5.jpg" alt="Salón Coffee & Cowork con columnas y espejos" loading="lazy"></div>
+      <div class="gal-grid cc-gal-grid" id="cc-gal-grid" style="margin-bottom:clamp(28px,4vw,48px);">
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-salon-2.jpg" alt="Salón Coffee & Cowork con mesón de desayuno y espejo" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-pan-tostadora.jpg" alt="Tostadora y canastos de pan en el buffet" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-jugos-cafe.jpg" alt="Dispensadores de jugo, café y té del buffet" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-fiambres.jpg" alt="Tabla de quesos, salame y jamón" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-salon-4.jpg" alt="Mesas del salón Coffee & Cowork con vista a la ciudad" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-salon-3.jpg" alt="Mesón de desayuno junto al muro verde" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-tv-pan.jpg" alt="Sala con TV y mesón de pan y cereales" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-buffet-completo.jpg" alt="Buffet completo con frutas, cereales y pastelería" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-salon-6.jpg" alt="Salón Coffee & Cowork con afiches y dispensadores de bebidas" loading="lazy"></button>
+        <button type="button" class="photo cc-gal-btn"><img src="assets/cowork-salon-5.jpg" alt="Salón Coffee & Cowork con columnas y espejos" loading="lazy"></button>
       </div>
+      <dialog class="rm-modal" id="cc-lightbox" aria-label="Foto de la galería Coffee & Cowork">
+        <div class="rm-head"><h2 class="sr">Foto ampliada</h2><button type="button" class="rm-close" id="cc-lb-close" aria-label="Cerrar">✕</button></div>
+        <div class="photo rm-main" style="aspect-ratio:4/3;">
+          <img id="cc-lb-img" src="" alt="">
+          <button type="button" class="rm-nav prev" id="cc-lb-prev" aria-label="Foto anterior">‹</button>
+          <button type="button" class="rm-nav next" id="cc-lb-next" aria-label="Foto siguiente">›</button>
+          <span class="rm-count" id="cc-lb-count"></span>
+        </div>
+      </dialog>
       <div class="cc-hours">
         <h2><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Horarios de atención</h2>
         <p class="cc-hours-note">Este horario corresponde al desayuno buffet. El espacio está disponible como cowork para los huéspedes las 24 horas del día.</p>
@@ -1505,6 +1517,33 @@ document.querySelectorAll(".rp-gal").forEach(function(g){
   });
 });
 
+
+/* ---- lightbox de la galería Coffee & Cowork ---- */
+(function(){
+  var grid = document.getElementById("cc-gal-grid");
+  if (!grid) return;
+  var items = Array.prototype.slice.call(grid.querySelectorAll(".cc-gal-btn"));
+  var lb = document.getElementById("cc-lightbox");
+  var lbImg = document.getElementById("cc-lb-img");
+  var lbCount = document.getElementById("cc-lb-count");
+  var cur = 0;
+  function render(){
+    var img = items[cur].querySelector("img");
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCount.textContent = (cur + 1) + " / " + items.length;
+  }
+  function openAt(i){ cur = i; render(); lb.showModal(); }
+  items.forEach(function(btn, i){ btn.addEventListener("click", function(){ openAt(i); }); });
+  document.getElementById("cc-lb-close").addEventListener("click", function(){ lb.close(); });
+  document.getElementById("cc-lb-prev").addEventListener("click", function(){ cur = (cur - 1 + items.length) % items.length; render(); });
+  document.getElementById("cc-lb-next").addEventListener("click", function(){ cur = (cur + 1) % items.length; render(); });
+  lb.addEventListener("click", function(e){ if (e.target === lb) lb.close(); });
+  lb.addEventListener("keydown", function(e){
+    if (e.key === "ArrowLeft") document.getElementById("cc-lb-prev").click();
+    else if (e.key === "ArrowRight") document.getElementById("cc-lb-next").click();
+  });
+  lb.addEventListener("close", function(){ items[cur].focus(); });
+})();
 
 function syncDates(){ document.querySelectorAll("input[type=date]").forEach(function (i) { i.setAttribute("lang","es"); i.classList.toggle("has-v", !!i.value); }); }
 document.addEventListener("input", syncDates); document.addEventListener("change", syncDates); setInterval(syncDates, 250); syncDates();
