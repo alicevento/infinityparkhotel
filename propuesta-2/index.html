@@ -1791,5 +1791,11 @@ show(location.hash.slice(1) || "inicio", false);
   setTimeout(function(){ spin(3000,1.05); }, document.getElementById('loader') ? 3000 : 300);
 })();
 </script>
+<script>
+(function(){
+  if(!/[?&]logo=d\b/.test(location.search)) return;
+  document.querySelectorAll('.brand-logo > g:not(.brand-dots) [fill="#9C6E35"]').forEach(function(n){ n.setAttribute('fill','#080059'); });
+})();
+</script>
 </body>
 </html>
