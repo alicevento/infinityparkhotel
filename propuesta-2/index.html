@@ -111,7 +111,7 @@
   .hero > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,2,40,.74),rgba(4,2,40,.56) 55%,rgba(4,2,40,.5));}
   .hero-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding:30px 20px 120px;color:#fff;}
-  .hero-copy .sym{width:46px;height:auto;}
+  .hero-copy .sym{width:clamp(72px,7vw,96px);height:auto;}
   .hero-copy .caps{color:#fff;background:rgba(2,0,58,.82);padding:9px 18px;font-size:14px;font-weight:500;letter-spacing:.2em;}
   .hero-copy h1{font-size:clamp(38px,6.4vw,84px);color:#fff;max-width:17ch;text-shadow:0 2px 26px rgba(4,2,40,.5);}
   .hero-copy p.sub{color:#fff;max-width:48ch;font-size:18px;text-shadow:0 1px 16px rgba(2,0,58,.9),0 0 3px rgba(2,0,58,.6);}
@@ -815,7 +815,7 @@
   <div class="hero">
     <img class="bg" src="assets/fachada.jpg" alt="Fachada del Hotel Infinity en Merced 54, cubierta de verde">
     <div class="hero-copy">
-      <img class="sym" src="assets/simbolo-infinity-negativo.svg" alt="" width="51" height="49">
+      <img class="sym" src="assets/simbolo-infinity-negativo.svg" alt="" width="143" height="143">
       <p class="caps">Hotel Infinity · Santiago</p>
       <h1 tabindex="-1">Descubre nuestro hotel en la mejor ubicación de Santiago</h1>
       <p class="sub">Junto a Plaza Italia, en el corazón de Santiago.</p>
