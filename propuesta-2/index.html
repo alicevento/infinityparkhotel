@@ -1777,17 +1777,18 @@ show(location.hash.slice(1) || "inicio", false);
     });
   }
   function rest(){ dots.forEach(function(d){ d.c.setAttribute('cx',d.x0.toFixed(2)); d.c.setAttribute('cy',d.y0.toFixed(2)); d.c.setAttribute('r',d.r0); d.c.setAttribute('fill',d.f0); }); }
-  function spin(){
+  function spin(D,DELTA){
     if(reduce||busy) return; busy=true;
-    var t0=null, D=4800, DELTA=0.6;
+    var t0=null;
     function f(ts){ if(t0===null) t0=ts; var t=Math.min(1,(ts-t0)/D);
       draw(-DELTA*(1-Math.sin(t*Math.PI/2)), sm(0.8,1,t));
       if(t<1) requestAnimationFrame(f); else { rest(); busy=false; } }
     requestAnimationFrame(f);
   }
   var brand=document.querySelector('.brand');
-  brand.addEventListener('mouseenter',spin); brand.addEventListener('focus',spin);
-  setTimeout(spin, document.getElementById('loader') ? 3000 : 300);
+  function hover(){ spin(1800,0.7); }
+  brand.addEventListener('mouseenter',hover); brand.addEventListener('focus',hover);
+  setTimeout(function(){ spin(3000,1.05); }, document.getElementById('loader') ? 3000 : 300);
 })();
 </script>
 </body>
